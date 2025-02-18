@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu</title>
+    <link rel="stylesheet" href="../css/2try.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <img class="logo" src="../images/logo.jpg" alt="YMCA Logo">
+        <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+        <!-- <ul id="nav-menu">
+            <li><a href="#" class="nav-item" onclick="toggleDropdown('home-dropdown', this)">Home</a></li>
+            <li><a href="#" class="nav-item" onclick="toggleDropdown('about-dropdown-', this)">Products</a></li>
+            <li><a href="#" class="nav-item" onclick="toggleDropdown('contact-dropdown', this)">Contact Us</a></li>
+            <li><a href="#" class="nav-item" onclick="toggleDropdown('branches-dropdown', this)">Cart</a></li>
+        </ul> -->
+    </nav>
+
+    <!-- Dropdowns -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Products</a>
+                <ul class="dropdown-menu">
+                    <li><a href="./pages/badminton.html">Badminton</a></li>
+                    <li><a href="./pages/shuttle.html">Shuttle</a></li>
+                    <li><a href="./pages/grip.html">Grip</a></li>
+                </ul>
+            </li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#payment">Payment</a></li>
+            <li class="dropdown">
+                <a href="./pages/cast.html">Cart <span id="cartCount">0</span></a>
+                <ul class="dropdown-menu" id="cartDropdownMenu">
+                    <!-- Cart items will be dynamically added here -->
+                </ul>
+            </li>
+        </ul>
+    </div> 
+
+
+    
+
+    <!-- Logo -->
+    <div class="logo">
+        <img src="./images/logo.jpg" alt="E-Commerce Logo">
+    </div>
+</nav>
+</header>
+
+<!-- Main Section (Hero Image or Welcome Message) -->
+<section id="hero">
+<h1>Welcome to Our Sports Store</h1>
+<p>Find the best products at the best prices!</p>
+<marquee>
+    <h1>Badminton Equipment are available</h1>
+    <p>Badminton Racket, Shuttle & Grip are Available</p>
+</marquee>
+</section>
+
+<!-- Products Section -->
+<h2>Our Products</h2>
+<section id="products">
+<!-- Product 1 -->
+<div class="product-card">
+    <img src="./images/nanoray1.webp" alt="Product 1">
+    <h3>Product 1</h3>
+    <p class="product-price">₹1800</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<!-- Product 2 --> 
+<div class="product-card">
+    <img src="./images/shubam.jpg" alt="Product 2">
+    <h3>Product 2</h3>
+    <p class="product-price">₹1500</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<div class="product-card">
+    <img src="./images/shubam1.jpg" alt="Product 3">
+    <h3>Product 3</h3>
+    <p class="product-price">₹2000</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<div class="product-card">
+    <img src="./images/shubam1.jpg" alt="Product 4">
+    <h3>Product 4</h3>
+    <p class="product-price">₹2000</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<div class="product-card">
+    <img src="./images/shubam1.jpg" alt="Product 5">
+    <h3>Product 5</h3>
+    <p class="product-price">₹2000</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<div class="product-card">
+    <img src="./images/shubam1.jpg" alt="Product 6">
+    <h3>Product 6</h3>
+    <p class="product-price">₹2000</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact">
+<h2>Contact Us</h2>
+<form id="contactForm" onsubmit="submitContactForm(event)">
+    <input type="text" id="name" placeholder="Your Name" required><br>
+    <input type="email" id="email" placeholder="Your Email" required><br>
+    <textarea id="message" placeholder="Your Message" required></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+</section>
+
+<!-- Payment Section -->
+<section id="payment">
+<h2>Payment Options</h2>
+<button onclick="showPaymentForm()">Proceed to Payment</button>
+
+<!-- Payment Form -->
+<div class="payment-form" id="paymentForm">
+    <h2>Enter Payment Details</h2>
+    <form id="paymentDetailsForm">
+        <label for="accountNumber">Account Number:</label>
+        <input type="text" id="accountNumber" name="accountNumber" required><br>
+
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" name="cardNumber" required><br>
+
+        <label for="amount">Amount (Amazon Payment):</label>
+        <input type="number" id="amount" name="amount" required><br>
+
+        <button type="button" onclick="processPayment()">Continue</button>
+    </form>
+</div>
+</section>
+
+<!-- Success Message Section (Hidden Initially) -->
+<section id="successMessage" style="display: none;">
+<h3>Your details have been successfully submitted and payment has been completed!</h3>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2025 E-Commerce Website. All Rights Reserved.</p>
+</footer>
+
+<!-- Include JavaScript -->
+<script src="./try.js"></script>
+
+<!-- JavaScript to handle the hamburger menu -->
+<script>
+// Toggle the navigation menu on small screens
+document.getElementById("hamburger").addEventListener("click", function() {
+    document.getElementById("navLinks").classList.toggle("show");
+});
+</script>
+    
+  
+
+<script>
+    // Toggle the navigation menu on small screens
+    document.getElementById("hamburger").addEventListener("click", function() {
+        document.getElementById("navLinks").classList.toggle("show");
+    });
+</script>
+
+
+    <script src="../jsfile/2try.js"></script>
+</body>
+</html>
