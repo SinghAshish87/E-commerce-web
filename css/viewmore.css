@@ -1,0 +1,229 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+header {
+  background-color: #f6eded;
+  color: #1d1c1c;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;  /* Space between nav items and logo */
+  align-items: center;
+}
+
+header nav {
+  display: flex;
+  justify-content: center;  /* Center the nav items */
+  flex: 1;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: rgb(12, 12, 12);
+  font-family: bold;
+  font-size: 18px;  /* Make the text larger */
+  font-weight: bold;  /* Make the text bold */
+  text-decoration: none;
+  padding: 10px 15px;  /* Add padding for better spacing */
+}
+
+header nav ul li a:hover {
+  color: rgb(226, 225, 224);
+  background-color: rgb(248, 23, 7);
+  font-family: bold;
+  font-size: 15px;
+  font-weight: bold;  /* Make the text bold */
+  padding: 10px 15px;  /* Add padding for better spacing 
+}
+
+header .logo {
+  margin-left: auto;  /* Push the logo to the right */
+}
+
+header .logo img {
+  width: 50px;  /* Adjust the size of the logo */
+  height: 50px;
+  border-radius: 50%;  /* Make the logo round */
+  border: 3px solid white;  /* Optional: Add a border around the logo */
+}
+
+/* Dropdown Menu Styles */
+header nav ul li.dropdown {
+  position: relative; /* Necessary for the dropdown menu */
+}
+
+header nav ul li .dropdown-menu {
+  display: none; /* Initially hide the dropdown menu */
+  position: absolute;
+  top: 100%; /* Position the dropdown below the Products menu */
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for better visibility */
+  min-width: 160px;
+  z-index: 1;
+}
+
+header nav ul li .dropdown-menu li {
+  padding: 10px 15px;
+}
+
+header nav ul li .dropdown-menu li a {
+  color: black;
+  text-decoration: none;
+}
+
+header nav ul li .dropdown-menu li a:hover {
+  background-color: rgb(248, 23, 7);
+  color: white;
+}
+
+/* Show dropdown menu when hovering over the Products menu item */
+header nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+#hero {
+  background-color: #4CAF50;
+  color: rgb(249, 245, 245);
+  text-align: center;
+  padding: 5px 20px; /* 50px 20px*/
+}
+
+#products {
+  padding: 30px;
+  text-align: center;
+}
+
+.product-card {
+  display: inline-block;
+  width: 200px;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 100px;
+}
+
+.product-card button {
+  background-color: #4CAF50;
+  background-image: url("badmin");
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#contact {
+  background-color: #f2f2f2;
+  padding: 30px;
+  text-align: center;
+}
+
+#contact input, #contact textarea {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+}
+
+#contact button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#payment {
+  text-align: center;
+  padding: 30px;
+}
+
+#payment button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+/* slider */
+/* Container for the slider */
+.slider-container {
+  position: relative;
+  width: 500px;  /* Width of the slider */
+  height: 500px; /* Height of the slider */
+  overflow: hidden; /* Hide overflowed images */
+  margin: 0 auto;
+}
+
+/* Container for the images */
+.slider-images {
+  display: flex;
+  transition: transform 0.5s ease; /* Smooth sliding transition */
+}
+
+/* Style for each image */
+.slider-images img {
+  width: 500px;   /* Each image takes up the full width of the container */
+  height: 500px;  /* Each image takes up the full height of the container */
+  object-fit: cover;  /* Ensure images cover the entire container without distortion */
+}
+
+/* Style for the buttons */
+.button {
+  position: absolute;
+  top: 50%;  /* Position vertically centered */
+  transform: translateY(-50%); /* Center the button */
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 10px;  /* Position the previous button on the left */
+}
+
+.next {
+  right: 10px;  /* Position the next button on the right */
+}
+
+/* Optional: Button hover effect */
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+#successMessage {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
