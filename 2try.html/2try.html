@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <link rel="stylesheet" href="try.css">
+</head>
+<body> 
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Products</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../pages/badminton.html">Badminton</a></li>
+                        <li><a href="../pages/shuttle.html">Shuttle</a></li>
+                        <li><a href="../pages/grip.html">Grip</a></li>
+                    </ul>
+                </li>
+                <li><a href="../pages/contactus.html">Contact Us</a></li>
+                <li><a href="#payment">Payment</a></li>
+                <li class="dropdown">
+                    <a href="#">Cart <span id="cartCount">0</span></a>
+                    <ul class="dropdown-menu" id="cartDropdownMenu">
+                        <!-- Cart items will be dynamically added here -->
+                    </ul>
+                </li>
+            </ul>
+            <div class="logo">
+                <img src="../images/logo.jpg" alt="E-Commerce Logo">
+            </div>
+        </nav>
+    </header><br><br>
+
+    <!-- Main Section (Hero Image or Welcome Message) -->
+    <section id="hero">
+        <h1>Welcome to Our Sports Store</h1>
+        <p>Find the best products at the best prices!</p>
+        <marquee>
+            
+            <p>Shop premium badminton rackets designed for performance. Elevate your game with the perfect racket for every level!</p>
+
+        </marquee>
+    </section>
+
+    <!-- Products Section -->
+    <h2>Our Products</h2>
+    <section id="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="../images/nanoray 72 light.png" alt="Product 1">
+            <h3>nanoray 72 light</h3>
+            <p class="product-price">₹1800</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2 --> 
+        <div class="product-card">
+            <img src="../images/Yonex Arcsaber 7 Play.png" alt="Product 2">
+            <h3>Yonex Arcsaber 7 Play</h3>
+            <p class="product-price">₹2615</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- <div class="product-card">
+            <img src="./images/Yonex Astrox 1 DG.png" alt="Product 3">
+            <h3>Yonex Astrox 1 DG</h3>
+            <p class="product-price">₹3429</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div> -->
+
+        <div class="product-card">
+            <img src="../images/Yonex Astrox 1 DG.png" alt="Product 3">
+            <h3>Yonex Astrox 1 DG</h3>
+            <p class="product-price">₹3430</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- 4product -->
+         
+        <div class="product-card">
+            <img src="../images/astrock37i.jpg" alt="Product 3">
+            <h3>Yonex Astrock 37i</h3>
+            <p class="product-price">₹1800</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- 5product -->
+           
+
+        <div class="product-card">
+            <img src="../images/3dg.jpg" alt="Product 5">
+            <h3>Yonix Astrock 3DG </h3>
+            <p class="product-price">₹2935</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- 6 -->
+        <div class="product-card">
+            <img src="../images/attack 9.jpg" alt="Product 6">
+            <h3>Yonix Astrock attack 9 </h3>
+            <p class="product-price">₹1599</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- 7 -->
+        <div class="product-card">
+            <img src="../images/99play.jpg" alt="Product 7">>
+            <h3>Yonix Astrock 99play</h3>
+            <p class="product-price">₹3460</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- 8 -->
+        <div class="product-card">
+            <img src="../images/73 light.webp" alt="Product 8">
+            <h3>Yonix Astrock 73 light </h3>
+            <p class="product-price">₹1800</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- 9-->
+        <div class="product-card">
+            <img src="../images/7dg.jpg" alt="Product 9">
+            <h3>Yonix Astrock 7DG </h3>
+            <p class="product-price">₹2935</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </section>
+
+    
+    </section>
+
+    <!-- Success Message Section (Hidden Initially) -->
+    <section id="successMessage" style="display: none;">
+        <h3>Your details have been successfully submitted and payment has been completed!</h3>
+    </section>
+
+    <!--image gallery -->
+    <h1>Social Gallery</h1>
+    <div class="container-g">
+        <div class="gallery-item">
+            <img src="." alt="Image 1">
+        </div>
+<!-- 2image -->
+        <div class="gallery-item">
+            <img src="." alt="Image 1">
+        </div>
+<!-- 3image -->
+        <div class="gallery-item">
+            <img src="." alt="Image 1">
+        </div>
+
+ <!-- Video Gallery Items -->
+        <div class="video-wrapper">
+            <iframe width="560" height="315" 
+              src="https://www.youtube.com/embed/5G7EQ9G9238?si=ja5WrSsiN8EofR7C"
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+    </div>      
+<!--footer -->
+    <footer>
+        <p>&copy; 2025 E-Commerce Website. All Rights Reserved.</p>
+    </footer>
+    <!-- Include JavaScript -->
+
+    <script src="../jsfile/badminton.js"></script>
+</body>
+</html>
