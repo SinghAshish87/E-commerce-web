@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <link rel="stylesheet" href="../css/contact us.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Products</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./pages/badminton.html">Badminton</a></li>
+                        <li><a href="./pages/shuttle.html">Shuttle</a></li>
+                        <li><a href="./pages/grip.html">Grip</a></li>
+                    </ul>
+                </li>
+                <li><a href="./contactus.html">Contact Us</a></li>
+                <li><a href="#payment">Payment</a></li>
+                <li class="dropdown">
+                    <a href="#">Cart 
+                        <span id="cartCount">0</span></a>
+                    <ul class="dropdown-menu" id="cartDropdownMenu">
+                        <!-- Cart items will be dynamically added here -->
+                    </ul>
+                </li>
+            </ul>
+            <div class="logo">
+                <img src="../images/logo.jpg" alt="E-Commerce Logo">
+            </div>
+        </nav>
+    </header>
+
+    <!-- contact us from -->
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="submitContactForm(event)">
+            <input type="text" id="name" placeholder="Your Name" required><br>
+            <input type="email" id="email" placeholder="Your Email" required><br>
+    
+            <!-- Country Code Dropdown and Phone Number Input together -->
+            <div>
+                <select id="countryCode" required>
+                    <option value="" disabled selected>Select Country Code</option>
+                    <option value="91">India (+91)</option>
+                    <option value="1">United States (+1)</option>
+                    <option value="44">United Kingdom (+44)</option>
+                    <option value="61">Australia (+61)</option>
+                    <option value="81">Japan (+81)</option>
+                    <option value="49">Germany (+49)</option>
+                    <option value="33">France (+33)</option>
+                </select>
+                <input type="tel" id="phone" placeholder="Enter Phone Number" required><br>
+                <span id="phoneError" style="color: red; font-size: 14px; font-weight: bold; display: none;">Invalid phone number for the selected country code.</span><br>
+            </div>
+    
+            <!-- <select id="country" required>
+                <option value="" disabled selected>Select Your Country</option>
+                <option value="India">India</option>
+                <option value="USA">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="Australia">Australia</option>
+                <option value="Japan">Japan</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+            </select><br> -->
+    
+            <textarea id="message" placeholder="Your Message" required></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+        
+    
+
+    <!-- Include JavaScript -->
+    <script src="../jsfile/contactus.js"></script>
+</body>
+</html>

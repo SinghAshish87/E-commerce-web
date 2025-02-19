@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badminton Shuttle Shop</title>
+  <link rel="stylesheet" href="../css/shuttle.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="">Products</a>
+        <ul class="dropdown-menu">
+            <li><a href="../pages/badminton.html">Badminton</a></li>
+            <li><a href="../pages/shuttle.html">Shuttle</a></li>
+            <li><a href="../pages/grip.html">Grip</a></li>
+        </ul>
+    </li>
+      <li><a href="../pages/contactus.html">Contact Us</a></li>
+      <li><a href="#cart" id="cart-btn">Cart </a></li>
+      <li><a href="#payment">Payment</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>Badminton Shuttle Shop</h1>
+  </header>
+
+  <!-- Product Section -->
+  <div class="product-container" id="products">
+    <div class="product" id="shuttle1">
+      <img src="../images/mavis35 red.webp" alt="Badminton Shuttle 1">
+      <p class="product-name">Mavis 350 Red Cap</p>
+      <p class="product-price">1000 Rs</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" id="shuttle2">
+      <img src="../images/blue cap.jpg" alt="Badminton Shuttle 2">
+      <p class="product-name">Mavis 350 Blue Cap</p>
+      <p class="product-price">1500 Rs</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" id="shuttle3">
+      <img src="../images/green cap.jpg" alt="Badminton Shuttle 3">
+      <p class="product-name"> Mavis 350 Green Cap</p>
+      <p class="product-price">1250 Rs</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+       
+    <div class="product" id="shuttle3">
+      <img src="../images/350i.jpg" alt="Badminton Shuttle 4">
+      <p class="product-name">Mavis 350i Green Cap mavis 350i</p>
+      <p class="product-price">1400 Rs</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <h2>Your Cart</h2>
+    <ul id="cart-items-list">
+      <!-- Cart items will be displayed here -->
+    </ul>
+    <p id="cart-total">Total: Rs0.00</p>
+    <button id="close-cart">Close Cart</button>
+  </div>
+
+  <!-- Linking the JavaScript file -->
+  <script src="../jsfile/shuttle.js"></script>
+</body>
+</html>
