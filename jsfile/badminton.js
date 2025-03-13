@@ -1,6 +1,7 @@
 // Initialize cart array
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+updateCartCount()
 // Function to add a product to the cart
 function addToCart(productName, image, price) {
     const existingProduct = cart.find(item => item.product === productName);
@@ -11,6 +12,7 @@ function addToCart(productName, image, price) {
         cart.push({ product: productName, image, price, quantity: 1 }); // Add new product to cart
     }
 
+    localStorage.setItem("cart", JSON.stringify(cart));
     // Update the cart display and cart count
     updateCartDisplay();
     updateCartCount(); // Update cart count immediately after adding an item
@@ -36,6 +38,8 @@ function updateCartDisplay() {
     const cartItemsList = document.getElementById('cart-items-list');
     cartItemsList.innerHTML = ''; // Clear the existing cart display
 
+    console.log(cartItemsList);
+    
     if (cart.length === 0) {
         cartItemsList.innerHTML = '<li>Your cart is empty.</li>';
     } else {
@@ -55,27 +59,33 @@ function updateCartDisplay() {
 
 // Function to update the cart count in the header
 function updateCartCount() {
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    // const cartCount = cart.reduce((total, item) => total + item.quantity);
+    const cartCount = cart.length;
     const cartBtn = document.getElementById('cart-btn');
+    console.log(cartCount);
     
     if (cartCount > 0) {
-        cartBtn.textContent = `Cart (${cartCount})`; // Show the total quantity in the navbar
+        cartBtn.textContent = `Cart ${cartCount}`; // Show the total quantity in the navbar
     } else {
         cartBtn.textContent = `Cart`; // Show only 'Cart' if there are no items
     }
 }
 
 // Function to remove one unit of an item from the cart
-function removeFromCart(productName) {
-    const existingProduct = cart.find(item => item.product === productName);
+function removeFromCart(index) {
+    // const existingProduct = cart.find(item => item.product === productName);
 
-    if (existingProduct) {
-        if (existingProduct.quantity > 1) {
-            existingProduct.quantity -= 1; // Decrease quantity if more than 1
-        } else {
-            cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
-        }
-    }
+    // if (existingProduct) {
+    //     if (existingProduct.quantity > 1) {
+    //         existingProduct.quantity -= 1; // Decrease quantity if more than 1
+          
+    //     } else {
+    //         cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
+    //     }
+    // }
+
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartDisplay();
     updateCartCount();
@@ -116,3 +126,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         addToCart(productName, image, price);
     });
 });
+
+updateCartCount()
+updateCartDisplay()

@@ -1,5 +1,9 @@
-let cart = [];  // Array to store cart items
+let cart = JSON.parse(localStorage.getItem("cart")) || [];  // Array to store cart items
 
+const fetch = () => {
+    document.getElementById('cartCount').innerText = cart.length;
+}
+fetch();
 // Function to add product to cart
 function addToCart(productName, productPrice, productImage) {
     // Create product object
@@ -8,18 +12,18 @@ function addToCart(productName, productPrice, productImage) {
         price: productPrice,
         image: productImage
     };
-    
+
     // Add product to cart array
     cart.push(product);
-
     // Update cart count
-    document.getElementById('cartCount').innerText = cart.length;
+    fetch();
 
     // Update cart dropdown with product details
     updateCartDropdown();
 
     // Alert user that the product was added
     alert(`${productName} has been added to your cart!`);
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 // Function to update cart dropdown
@@ -28,13 +32,13 @@ function updateCartDropdown() {
     cartDropdownMenu.innerHTML = '';  // Clear previous cart items
 
     let totalAmount = 0;
-    
+
     // Loop through the cart and display products in the dropdown
     cart.forEach((product, index) => {
         // Create list item for each product
         const li = document.createElement('li');
         li.classList.add('cart-item');
-        
+
         li.innerHTML = `
             <img src="${product.image}" alt="${product.name}" width="30" height="30" style="border-radius: 5px;">
             ${product.name} - ₹${product.price}
@@ -42,7 +46,7 @@ function updateCartDropdown() {
         `;
 
         cartDropdownMenu.appendChild(li);
-        
+
         // Calculate total amount
         totalAmount += product.price;
     });
@@ -62,10 +66,10 @@ function onAddToCartClick(productName, productPrice, productImage) {
 function removeFromCart(index) {
     // Remove the product from the cart array
     cart.splice(index, 1);
-
     // Update cart count
     document.getElementById('cartCount').innerText = cart.length;
-
+    localStorage.setItem("cart", JSON.stringify(cart));
+     fetch();
     // Update the cart dropdown
     updateCartDropdown();
 }
@@ -77,7 +81,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         const productName = productCard.querySelector('h3').innerText;
         const productPrice = parseInt(productCard.querySelector('.product-price').innerText.replace('₹', '').trim());
         const productImage = productCard.querySelector('img').src;
-        
+
         onAddToCartClick(productName, productPrice, productImage);
     });
 });

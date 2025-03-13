@@ -1,5 +1,5 @@
 // Initialize cart array
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Function to add a product to the cart
 function addToCart(productName, image, price) {
@@ -10,7 +10,7 @@ function addToCart(productName, image, price) {
     } else {
         cart.push({ product: productName, image, price, quantity: 1 }); // Add new product to cart
     }
-
+    localStorage.setItem("cart", JSON.stringify(cart));
     // Update the cart display and cart count
     updateCartDisplay();
     updateCartCount(); // Update cart count immediately after adding an item
@@ -40,7 +40,7 @@ function updateCartDisplay() {
 
 // Function to update the cart count in the header
 function updateCartCount() {
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartCount = cart.length;
     const cartBtn = document.getElementById('cart-btn');
     
     if (cartCount > 0) {
@@ -52,15 +52,18 @@ function updateCartCount() {
 
 // Function to remove one unit of an item from the cart
 function removeFromCart(productName) {
-    const existingProduct = cart.find(item => item.product === productName);
+    // const existingProduct = cart.find(item => item.product === productName);
 
-    if (existingProduct) {
-        if (existingProduct.quantity > 1) {
-            existingProduct.quantity -= 1; // Decrease quantity if more than 1
-        } else {
-            cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
-        }
-    }
+    // if (existingProduct) {
+    //     if (existingProduct.quantity > 1) {
+    //         existingProduct.quantity -= 1; // Decrease quantity if more than 1
+    //     } else {
+    //         cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
+    //     }
+    // }
+
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartDisplay();
     updateCartCount();
@@ -101,3 +104,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         addToCart(productName, image, price);
     });
 });
+
+updateCartCount();
+updateCartDisplay();

@@ -1,5 +1,5 @@
 // Initialize cart array
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Function to add a product to the cart
 function addToCart(productName, image, price) {
@@ -11,6 +11,7 @@ function addToCart(productName, image, price) {
         cart.push({ product: productName, image, price, quantity: 1 }); // Add new product to cart
     }
 
+    localStorage.setItem("cart", JSON.stringify(cart));
     // Update the cart display and cart count
     updateCartDisplay();
     updateCartCount();
@@ -40,21 +41,25 @@ function updateCartDisplay() {
 
 // Function to update the cart count in the header
 function updateCartCount() {
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-    document.getElementById('cart-btn').textContent = `Cart (${cartCount})`;
+    const cartCount = cart.length;
+ 
+    document.getElementById('cart-btn').textContent = `Cart ${cartCount}`;
 }
 
 // Function to remove one unit of an item from the cart
-function removeFromCart(productName) {
-    const existingProduct = cart.find(item => item.product === productName);
+function removeFromCart(index) {
+    // const existingProduct = cart.find(item => item.product === productName);
 
-    if (existingProduct) {
-        if (existingProduct.quantity > 1) {
-            existingProduct.quantity -= 1; // Decrease quantity if more than 1
-        } else {
-            cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
-        }
-    }
+    // if (existingProduct) {
+    //     if (existingProduct.quantity > 1) {
+    //         existingProduct.quantity -= 1; // Decrease quantity if more than 1
+    //     } else {
+    //         cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
+    //     }
+    // }
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
 
     updateCartDisplay();
     updateCartCount();
@@ -95,3 +100,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         addToCart(productName, image, price);
     });
 });
+
+updateCartCount();
+updateCartDisplay()
