@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - AshPlay Sports</title>
+  <link rel="stylesheet" href="../css/2try.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="brand-name">AshPlay Sports</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cart.html">Cart <span id="cartCount">0</span></a></li>
+      </ul>
+      <div class="logo">
+        <img src="./images/logo.jpg" alt="E-Commerce Logo">
+      </div>
+    </nav>
+  </header>
+
+  <div id="cart-container">
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+      <!-- Cart items will be inserted here dynamically -->
+    </div>
+    <button id="checkout-btn">Proceed to Checkout</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 E-Commerce Website. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Load the cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cartCount');
+
+    // Show cart items on the page
+    function displayCartItems() {
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
+      } else {
+        cartItemsContainer.innerHTML = ''; // Clear existing items
+        cart.forEach(item => {
+          const cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+          cartItem.innerHTML = `
+            <p>${item.name} - ${item.price} x ${item.quantity}</p>
+            <button class="remove-btn" data-name="${item.name}">Remove</button>
+          `;
+          cartItemsContainer.appendChild(cartItem);
+        });
+      }
+      cartCount.textContent = cart.length;
+    }
+
+    // Remove item from cart
+    cartItemsContainer.addEventListener('click', (e) => {
+      if (e.target && e.target.classList.contains('remove-btn')) {
+        const productName = e.target.getAttribute('data-name');
+        cart = cart.filter(item => item.name !== productName);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCartItems();
+      }
+    });
+
+    // Display cart items when the page loads
+    window.addEventListener('load', displayCartItems);
+  </script>
+</body>
+
+</html>
+
+

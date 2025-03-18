@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="../css/checkout.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+  <div class="checkout-page">
+    <h1>Checkout</h1>
+
+    <!-- Checkout Form -->
+    <form id="checkout-form">
+      <h2>Shipping Information</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="address">Shipping Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <!-- Shipping Method -->
+      <h3>Select Shipping Method</h3>
+      <select name="shipping" id="shipping" required>
+        <option value="standard">Standard Shipping - $5.00</option>
+        <option value="expedited">Expedited Shipping - $10.00</option>
+      </select>
+
+      <!-- Payment Info -->
+      <h3>Payment Information</h3>
+      <label for="card">Credit Card Number</label>
+      <input type="text" id="card" name="card" required>
+
+      <button type="button" id="place-order">Place Order</button>
+    </form>
+
+    <!-- Success Message (Initially Hidden) -->
+    <div id="success-message" class="hidden">
+      <h2>Payment Successful! Thank you for your order.</h2>
+      <button id="ok-button">OK</button>
+    </div>
+  </div>
+
+  <!-- Link to your JavaScript file -->
+  <script src="../jsfile/checkout.js"></script>
+</body>
+</html>

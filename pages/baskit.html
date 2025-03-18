@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floating Card Design</title>
+  <link rel="stylesheet" href="../css/baskit.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <div id="notification-container"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1 class="shop-name">The PlayZone 🏀🏸</h1>
+    <div class="navbar-links">
+      <a href="../pages/index1.html">Home</a>
+      <a href="../pages/contactus.html">Contact Us</a>
+      <a href="../pages/about us.html">About Us</a>
+      <div class="dropdown">
+        <button class="dropbtn">Products &#9662;</button>
+        <div class="dropdown-content">
+          <a href="badminton.html">Badminton Rackets</a>
+          <a href="../pages/shuttle.html">Shuttle</a>
+          <a href="../pages/grip.html">Grips</a>
+          <a href="../pages/baskit.html">Baskitball</a>
+          <a href="../pages/jursey.html">Jersey</a>
+        </div>
+        <a href="../pages/feedback.html">Feedback!</a>
+      </div>
+    </div>
+    <a href="#" id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+
+  <section class="centered-section">
+    <header>BASKIT BALLS</header>
+</section>
+  <!-- Product Cards Section -->
+  <div class="container-a">
+    <section class="product-section">
+      <div class="card-container">
+        <!-- Product 1 -->
+        <div class="card" data-name="NANOFLARE 1000ZZ" data-price="15999" data-img="../images/baskit.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit.jpg');">
+                <div class="overlay-content">
+                  <h2></h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2></h2>
+                <h2></h2>
+                <h2> PRICE:15999</h2>
+                <!-- <p></p> -->
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="card" data-name="ASTROCK 1DG" data-price="3599" data-img="../images/baskit\ ad.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ ad.jpg');">
+                <div class="overlay-content">
+                  <h2></h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+                <h2>ASTROCK 1DG</h2>
+                <h2>TENSION :35LBS</h2>
+                <h2>Price:3599</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="card" data-name="ASTROCK 3DG" data-price="4000" data-img="https://via.placeholder.com/150\">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ all\ court.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+               <h2>ASTROCK 3DG</h2>
+               <h2> PRICE:4000</h2>
+               <h2>TENSION:35LBS</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="card" data-name="ASTROCK 37i" data-price="2000" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ cosco.jpg');"></div>
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+               <h2>ASTROCK 37i</h2>
+               <h2>PRICE:2000</h2>
+               <h2>TENSION:30LBS</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 5 -->
+        <div class="card" data-name="ASTROCK 99 PLAY" data-price="4500" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ gold.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+                <h2>ASTROCK 99 PLAY</h2>
+                <h2> PRICE:4500</h2>
+                <h2>TENSION:35LBS</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 6 -->
+        <div class="card" data-name="ASTROCK 7DG" data-price="4000" data-img="../images/7dg.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ hoops.jpg');">  
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+               <h2>ASTROCK 7DG</h2>
+               <h2>PRICE:4000</h2>
+               <h2>TENSION:35LBS</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 7 -->
+         
+        <div class="card" data-name="ASTROCK 7 PRO" data-price="4000" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ konix.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+               <h2>ARCSAVER 7 PRO</h2>
+               <h2>PRICE:4000</h2>
+               <h2>TENSION:35LBS</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-name="ASTROCK 2DG" data-price="4000" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ nivia.jpg');"> 
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+                <h2>ASTROCK 2DG</h2>
+                <h2>PRICE:4000</h2>
+                <h2>TENSION:35LBS</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        
+        <!--8 -->
+        <div class="card" data-name="astrock attack 9" data-price="1600" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/baskit\ top.jpg');"> 
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BRAND YONIX</h2>
+                <h2>ASTROCK ATTACK 9</h2>
+                <h2>PRICE:1600</h2>
+                <h2>TENSION:32LBS</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-name="NANORAY 70 LIGHT" data-price="2000" data-img="https://via.placeholder.com/150">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="background-image" style="background-image: url('../images/baskit\ gold.jpg');"> 
+                    <h2</h2>
+                    <!-- <i class="fas fa-arrow-right icon"></i> -->
+                  </div>
+                </div>
+              </div>
+              <div class="card-back">
+                <div class="product-info">
+                  <h2>BRAND YONIX</h2>
+                  <h2>NANORAY 70 LIGHT</h2>
+                  <h2>PRICE:2000</h2>
+                  <h2>TENSION:30LBS</h2>
+                  <button onclick="addToCart(this)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+        </div>      
+         </div>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <ul id="cart-items"></ul>
+      <p>Total: <span id="total-price">Rs 0.00</span></p>
+      <div class="cart-summary">
+        <button onclick="checkout()">Proceed to Checkout</button>
+        <button class="close-btn" onclick="closeCart()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification-container"></div>
+
+
+  <script>
+    // Get the dropdown button
+    const dropbtn = document.querySelector('.dropbtn');
+
+    // Add click event to toggle the dropdown
+    dropbtn.addEventListener('click', function() {
+        const dropdown = dropbtn.parentElement; // Get the parent dropdown
+        dropdown.classList.toggle('show'); // Toggle the 'show' class on the dropdown
+    });
+</script>
+
+
+  <script src="../jsfile/baskit.js"></script>
+</body>
+</html>
