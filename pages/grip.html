@@ -3,122 +3,419 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Badminton Shuttle Shop</title>
+  <title>Floating Card Design</title>
   <link rel="stylesheet" href="../css/grip.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-
+  <div id="notification-container"></div>
   <!-- Navbar -->
-  <nav>
-    <ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="">Products</a>
-        <ul class="dropdown-menu">
-            <li><a href="../pages/badminton.html">Badminton</a> </li>
-            <li><a href="../pages/shuttle.html">Shuttle</a></li>
-            <li><a href="../pages/grip.html">Grip</a></li>
-        </ul>
-    </li>
-      <li><a href="../pages/contactus.html">Contact Us</a></li>
-      <li><a href="#cart" id="cart-btn">Cart</a></li>
-      <!-- <li><a href="#payment">Payment</a></li> -->
-    </ul>
+  <nav class="navbar">
+    <h1 class="shop-name">The PlayZone 🏀🏸</h1>
+    <div class="navbar-links">
+      <a href="../pages/index1.html">Home</a>
+      <a href="../pages/contactus.html">Contact Us</a>
+      <a href="../pages/about us.html">About Us</a>
+      <div class="dropdown">
+        <button class="dropbtn">Products &#9662;</button>
+        <div class="dropdown-content">
+          <a href="../pages/badminton.html">Badminton Rackets</a>
+          <a href="../pages/shuttle.html">Shuttle</a>
+          <a href="../pages/grip.html">Grips</a>
+          <a href="../pages/baskit.html">Basketball</a>
+          <a href="../pages/jursey.html">Jersey</a>
+        </div>
+        <a href="../pages/feedback.html">Feedback!</a>
+      </div>
+    </div>
+    <a href="#" id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</a>
   </nav>
 
-  <!-- Header -->
-  <header>
-    <h1>Grip Shoop</h1>
-  </header>
-
-  <section id="about">
-    <h1>About Us</h1>
-    <p>We provide high-quality badminton grips to enhance comfort, control, and performance for players of all levels.</p>
+  <section class="centered-section">
+    <header>GTIPS</header>
 </section>
+  <!-- Product Cards Section -->
+  <div class="container-a">
+    <section class="product-section">
+      <div class="card-container">
+        <!-- Product 1 -->
+        <div class="card" data-name="Towel" data-price="350" data-img="https://via.placeholder.com/150">
 
-  <!-- Product Section -->
-  <div class="product-container" id="products">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/badminton\ grip1.jpeg');">
+                <div class="overlay-content">
+                  <h2></h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Badminton Grip</h2>
+                <h2>Towel Grip</h2>
+                <h3>350</h3>
+                <!-- <p>Price: 1999</p> -->
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <div class="product" id="shuttle3">
-        <img src="../images/badminton grip1.jpeg" alt="Badminton Shuttle 1">
-        <p class="product-name"></p>
-        <p class="product-price">120 Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
+        <!-- 2 -->
+        <div class="card" data-name="Badminton Grip" data-price="130" data-img="../images/g1.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g1.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>BAdminton Grip</h2>
+               <h2>Soft Grip</h2>
+               <h2>Price:130</h2>
+               
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="card" data-name="Badminton  Yonix Grip" data-price="150" data-img="../images/g2.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g2.jpg');">
+                <div class="overlay-content">
+                
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Yonix Grip</h2>
+               <h2>Soft </h2>
+               <h2>Price:150</h2>
+               <p></p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="card" data-name="Badminton Grip" data-price="120" data-img="../images/badminton\ grip4.jpeg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/badminton\ grip4.jpeg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Lining Grip</h2>
+               <h2>Soft</h2>
+               <h2>Price:120</h2>
+               <p></p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 5 -->
+        <div class="card" data-name="Badminton grip" data-price="150" data-img="../images/badminton\ grip5.jpeg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/badminton\ grip5.jpeg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Yonix  Grip</h2>
+               <h2>Only  one peace</h2>
+               <h2>Price:100</h2>
+               <p></p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 6 -->
+        <div class="card" data-name="Badminton  Lining Grip" data-price="230" data-img="../images/badminton\ grip6.jpeg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/badminton\ grip6.jpeg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Lining Grip</h2>
+               <h2>Fat</h2>
+               <h2>Only  one peace</h2>
+               <h2>Price:230</h2>
+               <p></p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 7 -->
+         
+        <div class="card" data-name="Badminton Towel Grip" data-price="230" data-img="../images/g7.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g7.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Tonix </h2>
+               <h2>Towel Grip</h2>
+               <h2>Price:230</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!--8 -->
+        <div class="card" data-name="Badminton Racket" data-price="130" data-img="../images/g9.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g9.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Yonix</h2>
+                <h2>Normal</h2>
+                <h2>Price:130</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-name="Badminton Racket" data-price="130" data-img="../images/g8.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g10.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Yonix</h2>
+                <h2>Fat</h2>
+                <h2>Price:130</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card" data-name="Badminton Racket" data-price="170" data-img="../images/g8.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g8.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Yonix</h2>
+                <h2>one Box</h2>
+                <h2>Price:2500</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card" data-name="Badminton Racket" data-price="1130" data-img="../images/g14.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g14.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Yonix</h2>
+                <h2>Fat</h2>
+                <h2>Price:130</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div><br>
 
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip2.jpeg" alt="Badminton Shuttle 2">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
+        <div class="card" data-name="Badminton Racket" data-price="270" data-img="../images/g15.jpg">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('../images/g15.jpg');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Yonix</h2>
+                <h2>Fat</h2>
+                <h2>Price:270</h2>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <section class="centered-section">
+          <header>More</header>
+      </section><br><br>
+     
+        <div class="card" data-name="Badminton Racket" data-price="1999" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('https://via.placeholder.com/150');">
+                <div class="overlay-content">
+                  <h2</h2>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2></h2>
+               <h2></h2>
+               <h3></h3>
+               <p></p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip3.jpeg" alt="Badminton Shuttle 3">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
+        <div class="card" data-name="Badminton Racket" data-price="1999" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('https://via.placeholder.com/150');">
+                <div class="overlay-content">
+                  <h2</h2>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2></h2>
+               <h2></h2>
+               <h3></h3>
+               <p></p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <div class="card" data-name="Badminton Racket" data-price="1999" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('https://via.placeholder.com/150');">
+                <div class="overlay-content">
+                  <h2</h2>
+        
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2></h2>
+               <h2></h2>
+               <h3></h3>
+               <p></p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip4.jpeg" alt="Badminton Shuttle 4">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
+        <div class="card" data-name="Tennis Racket" data-price="2499" data-img="https://via.placeholder.com/150">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="background-image" style="background-image: url('https://via.placeholder.com/150');">
+                <div class="overlay-content">
+                  <h2>Asrsaver 73 Light</h2>
+        
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="product-info">
+                <h2>Asrsaver 73 Light</h2>
+                <h3>Tension 30</h3>
+                <p>Price: 2499</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+  </div> -->
 
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip5.jpeg" alt="Badminton Shuttle 5">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <ul id="cart-items"></ul>
+      <p>Total: <span id="total-price">Rs 0.00</span></p>
+      <div class="cart-summary">
+        <button onclick="checkout()">Proceed to Checkout</button>
+        <button class="close-btn" onclick="closeCart()">Close</button>
       </div>
-
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip6.jpeg" alt="Badminton Shuttle 6">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
-
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip7.jpeg" alt="Badminton Shuttle 7">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip8.jpeg" alt="Badminton Shuttle 8">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip9.jpeg" alt="Badminton Shuttle 9">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
-
-      <div class="product" id="shuttle3">
-        <img src="../images/badminton grip 9.jpeg" alt="Badminton Shuttle 10">
-        <p class="product-name"></p>
-        <p class="product-price"> Rs</p>
-        <button class="add-to-cart">Add To Cart</button>
-      </div>
-    
+    </div>
   </div>
+  <script>
+    // Get the dropdown button
+    const dropbtn = document.querySelector('.dropbtn');
 
-  <!-- Cart Sidebar -->
-  <div class="cart-sidebar" id="cart-sidebar">
-    <h2>Your Cart</h2>
-    <ul id="cart-items-list">
-      <!-- Cart items will be displayed here -->
-    </ul>
-    <p id="cart-total">Total: Rs0.00</p>
-    <button id="close-cart">Close Cart</button>
-  </div>
+    // Add click event to toggle the dropdown
+    dropbtn.addEventListener('click', function() {
+        const dropdown = dropbtn.parentElement; // Get the parent dropdown
+        dropdown.classList.toggle('show'); // Toggle the 'show' class on the dropdown
+    });
+</script>
 
-  <!-- Linking the JavaScript file -->
+
   <script src="../jsfile/grip.js"></script>
 </body>
 </html>

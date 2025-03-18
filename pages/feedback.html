@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form - The PlayZone Sports Shop</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            margin: 0;
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            background-attachment: fixed;
+        }
+
+        /* Glowing Title */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 50px;  
+            margin-left: 40px;  
+            margin-bottom: 30px;
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            animation: glowing 3s ease-in-out infinite, fadeIn 1s ease-out;
+            z-index: 1;
+        }
+
+        @keyframes glowing {
+            0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff007f, 0 0 70px #ff007f; }
+            25% { text-shadow: 0 0 10px #fff, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00b300, 0 0 70px #00b300; }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #0000ff, 0 0 30px #0000ff, 0 0 40px #0033cc, 0 0 70px #0033cc; }
+            75% { text-shadow: 0 0 10px #fff, 0 0 20px #ffff00, 0 0 30px #ffff00, 0 0 40px #cccc00, 0 0 70px #cccc00; }
+            100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff007f, 0 0 30px #ff007f, 0 0 40px #ff0000, 0 0 70px #ff0000; }
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus,
+        input[type="number"]:focus {
+            border-color: #3a7bd5;
+            outline: none;
+            box-shadow: 0 0 10px rgba(58, 123, 213, 0.4);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Emoji Rating */
+        .emoji-rating {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .emoji-rating label {
+            font-size: 40px;
+            cursor: pointer;
+            margin: 0 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .emoji-rating label:hover {
+            transform: scale(1.3);
+        }
+
+        .emoji-message {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Submit Button */
+        button {
+            background-color: #3a7bd5;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00d2ff;
+            transform: translateY(-3px);
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            text-align: center;
+            z-index: 1000;
+            animation: fadeIn 1s ease-out;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h2{
+            font-size: 20px;
+            font-style: normal;
+            color: black;
+        }
+        .notification.success {
+            background-color: #4caf50;
+        }
+
+        .notification.error {
+            background-color: #f44336;
+        }
+
+        /* Fade-in Animation for notification */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Colors for the emoji messages */
+        .emoji-1 { color: #f44336; } 
+        .emoji-2 { color: #ff9800; } 
+        .emoji-3 { color: #ffeb3b; } 
+        .emoji-4 { color: #4caf50; } 
+        .emoji-5 { color: #2196f3; } 
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            label {
+                font-size: 14px;
+            }
+        }
+
+        /* Back to Home Button */
+        .back-home-button {
+            display: none;
+            margin-top: 20px;
+            background-color: #4caf50;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .back-home-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FEEDBACK FORM </h1>
+        <p>Your opinion helps us improve our services. Please let us know about your experience at The PlayZone Sports Shop.</p>
+        
+        <form id="feedback-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">How would you rate your overall experience?</label>
+                <select id="experience" name="experience" required>
+                    <option value="" disabled selected>Select your rating</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Average">Average</option>
+                    <option value="Poor">Poor</option>
+                </select>
+            </div>
+
+            <!-- Emoji Selection -->
+            <h2>Emogi Rating!</h2>
+            <div class="form-group emoji-rating">
+                <label for="emoji-2" class="emoji-2">😐</label>
+                <label for="emoji-3" class="emoji-3">😊</label>
+                <label for="emoji-4" class="emoji-4">😁</label>
+                <label for="emoji-5" class="emoji-5">😄</label>
+            </div>
+
+            <div class="form-group">
+                <div id="emoji-message" class="emoji-message"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="suggestions">Suggestions for improvement</label>
+                <textarea id="suggestions" name="suggestions" placeholder="Let us know how we can improve" required></textarea>
+            </div>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+    <div class="notification success" id="success-notification">
+        Thank you for your feedback! We appreciate your time and input.
+    </div>
+
+    <button class="back-home-button" id="back-home-button" onclick="window.location.href='index.html';">Back to Home Page</button>
+
+    <script>
+        const emojiMessage = document.getElementById('emoji-message');
+        const emojiLabels = document.querySelectorAll('.emoji-rating label');
+        const emojiMessages = {
+            "😐": {
+                text: "We are sad to hear that! We'll work harder to improve our service.",
+                color: "#ff9800" 
+            },
+            "😊": {
+                text: "Glad you liked it! We're happy to have helped.",
+                color: "#ffeb3b" 
+            },
+            "😁": {
+                text: "We're so happy to hear you loved our service! ❤️",
+                color: "#4caf50" 
+            },
+            "😄": {
+                text: "Wow! Thank you for your amazing feedback! 😄",
+                color: "#2196f3" 
+            }
+        };
+
+        emojiLabels.forEach(label => {
+            label.addEventListener('click', function() {
+                const emoji = label.textContent;
+                if (emojiMessages[emoji]) {
+                    emojiMessage.textContent = emojiMessages[emoji].text;
+                    emojiMessage.style.color = emojiMessages[emoji].color;
+                    emojiMessage.style.opacity = 1; 
+                }
+            });
+        });
+
+        const feedbackForm = document.getElementById('feedback-form');
+        const successNotification = document.getElementById('success-notification');
+        const backHomeButton = document.getElementById('back-home-button');
+
+        feedbackForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            successNotification.style.display = 'flex';  
+            backHomeButton.style.display = 'block';  
+        });
+    </script>
+</body>
+</html>

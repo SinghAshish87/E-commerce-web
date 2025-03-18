@@ -1,84 +1,317 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Website</title>
-    <link rel="stylesheet" href="../css/contact us.css">
+    <title>Contact Us - The PlayZone</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Form Container */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="file"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: border 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .notification {
+            display: none;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .error {
+            background-color: #f44336;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 25px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                padding: 12px;
+            }
+        }
+
+        /* Additional Fields for Specific Issues */
+        #billing-fields, #tech-support-fields, #general-inquiry-fields {
+            display: none;
+            margin-top: 20px;
+        }
+
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Products</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="./pages/badminton.html">Badminton</a></li>
-                        <li><a href="./pages/shuttle.html">Shuttle</a></li>
-                        <li><a href="./pages/grip.html">Grip</a></li>
-                    </ul>
-                </li>
-                <li><a href="./contactus.html">Contact Us</a></li>
-                <li><a href="#payment">Payment</a></li>
-                <li class="dropdown">
-                    <a href="#">Cart 
-                        <span id="cartCount">0</span></a>
-                    <ul class="dropdown-menu" id="cartDropdownMenu">
-                        <!-- Cart items will be dynamically added here -->
-                    </ul>
-                </li>
-            </ul>
-            <div class="logo">
-                <img src="../images/logo.jpg" alt="E-Commerce Logo">
+
+    <div class="container">
+        <h1>Contact us</h1>
+        <form id="contact-form" action="submit_form.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
             </div>
-        </nav>
-    </header>
-
-    <!-- contact us from -->
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contactForm" onsubmit="submitContactForm(event)">
-            <input type="text" id="name" placeholder="Your Name" required><br>
-            <input type="email" id="email" placeholder="Your Email" required><br>
-    
-            <!-- Country Code Dropdown and Phone Number Input together -->
-            <div>
-                <select id="countryCode" required>
-                    <option value="" disabled selected>Select Country Code</option>
-                    <option value="91">India (+91)</option>
-                    <option value="1">United States (+1)</option>
-                    <option value="44">United Kingdom (+44)</option>
-                    <option value="61">Australia (+61)</option>
-                    <option value="81">Japan (+81)</option>
-                    <option value="49">Germany (+49)</option>
-                    <option value="33">France (+33)</option>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email (only Gmail allowed)" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Contact Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Select a Subject</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="support">Technical Support</option>
+                    <option value="billing">Billing Issue</option>
                 </select>
-                <input type="tel" id="phone" placeholder="Enter Phone Number" required><br>
-                <span id="phoneError" style="color: red; font-size: 14px; font-weight: bold; display: none;">Invalid phone number for the selected country code.</span><br>
             </div>
-    
-            <!-- <select id="country" required>
-                <option value="" disabled selected>Select Your Country</option>
-                <option value="India">India</option>
-                <option value="USA">United States</option>
-                <option value="UK">United Kingdom</option>
-                <option value="Australia">Australia</option>
-                <option value="Japan">Japan</option>
-                <option value="Germany">Germany</option>
-                <option value="France">France</option>
-            </select><br> -->
-    
-            <textarea id="message" placeholder="Your Message" required></textarea><br>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-        
-    
 
-    <!-- Include JavaScript -->
-    <script src="../jsfile/contactus.js"></script>
+            <!-- Billing Issue Specific Fields -->
+            <div id="billing-fields">
+                <div class="form-group">
+                    <label for="transaction-id">Transaction ID</label>
+                    <input type="text" id="transaction-id" name="transaction-id" placeholder="Enter your Transaction ID">
+                </div>
+                <div class="form-group">
+                    <label for="issue-date">Date of Issue</label>
+                    <input type="date" id="issue-date" name="issue-date">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount Charged</label>
+                    <input type="text" id="amount" name="amount" placeholder="Enter the amount charged">
+                </div>
+                <div class="form-group">
+                    <label for="billing-description">Billing Issue Description</label>
+                    <textarea id="billing-description" name="billing-description" placeholder="Describe the billing issue in detail"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="billing-proof">Upload Billing Proof (Optional)</label>
+                    <input type="file" id="billing-proof" name="billing-proof">
+                </div>
+            </div>
+
+            <!-- Technical Support Specific Fields -->
+            <div id="tech-support-fields">
+                <div class="form-group">
+                    <label for="device">Device/Software</label>
+                    <input type="text" id="device" name="device" placeholder="Enter device or software name">
+                </div>
+                <div class="form-group">
+                    <label for="tech-description">Technical Issue Description</label>
+                    <textarea id="tech-description" name="tech-description" placeholder="Describe the technical issue in detail"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="error-code">Error Code (if any)</label>
+                    <input type="text" id="error-code" name="error-code" placeholder="Enter any error codes">
+                </div>
+            </div>
+
+            <!-- General Inquiry Specific Fields -->
+            <div id="general-inquiry-fields">
+                <div class="form-group">
+                    <label for="inquiry-type">Inquiry Type</label>
+                    <select id="inquiry-type" name="inquiry-type">
+                        <option value="product">Product Inquiry</option>
+                        <option value="service">Service Inquiry</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="general-inquiry-description">Inquiry Description</label>
+                    <textarea id="general-inquiry-description" name="general-inquiry-description" placeholder="Describe your inquiry"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+            </div>
+
+            <!-- CAPTCHA Verification -->
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="YOUR_GOOGLE_RECAPTCHA_SITE_KEY"></div>
+            </div>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="notification" id="success-notification">
+            Thank you for contacting us! Your message has been successfully sent.
+        </div>
+        <div class="notification error" id="error-notification">
+            Please check the form for errors. Ensure all fields are filled out correctly.
+        </div>
+    </div>
+
+    <script>
+        // Show specific fields based on selected subject
+        document.getElementById('subject').addEventListener('change', function() {
+            var subject = this.value;
+            var billingFields = document.getElementById('billing-fields');
+            var techSupportFields = document.getElementById('tech-support-fields');
+            var generalInquiryFields = document.getElementById('general-inquiry-fields');
+
+            // Hide all specific fields initially
+            billingFields.style.display = 'none';
+            techSupportFields.style.display = 'none';
+            generalInquiryFields.style.display = 'none';
+
+            // Show specific fields based on subject selection
+            if (subject === 'billing') {
+                billingFields.style.display = 'block';
+            } else if (subject === 'support') {
+                techSupportFields.style.display = 'block';
+            } else if (subject === 'general') {
+                generalInquiryFields.style.display = 'block';
+            }
+        });
+
+        // Form Validation and Submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form field values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+
+            // Basic input validation
+            var nameRegex = /^[a-zA-Z\s]+$/; // Allow only letters and spaces for name
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/; // Allow only @gmail.com for email
+            var phoneRegex = /^[0-9]{10}$/; // Only 10-digit phone numbers
+
+            if (nameRegex.test(name) && emailRegex.test(email) && phoneRegex.test(phone) && message.trim() !== '') {
+                // Show success notification
+                document.getElementById('success-notification').style.display = 'block';
+                document.getElementById('error-notification').style.display = 'none';
+
+                // Reset form fields
+                document.getElementById('contact-form').reset();
+
+                // Hide notification after 5 seconds
+                setTimeout(function() {
+                    document.getElementById('success-notification').style.display = 'none';
+                }, 5000);
+            } else {
+                // Show error notification
+                document.getElementById('error-notification').style.display = 'block';
+                document.getElementById('success-notification').style.display = 'none';
+
+                // Hide error notification after 5 seconds
+                setTimeout(function() {
+                    document.getElementById('error-notification').style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+
 </body>
 </html>
