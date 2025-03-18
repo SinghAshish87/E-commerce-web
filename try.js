@@ -1,118 +1,152 @@
-// Initialize cart array
-let cart = [];
+// Cart variables
+let cartCount = 0; // Initialize cart count to 0
+let cartItems = []; // Array to store cart items
+let lastScrollPosition = 0; // Variable to store the last scroll position
 
-// Function to add a product to the cart
-function addToCart(productName, image, price) {
-    const existingProduct = cart.find(item => item.product === productName);
+const cartIcon = document.getElementById('cart-icon');
+const cartCountElement = document.getElementById('cart-count');
+const cartModal = document.querySelector('.cart-modal');
+const cartItemsList = document.getElementById('cart-items');
+const notification = document.querySelector('.notification');
 
-    if (existingProduct) {
-        existingProduct.quantity += 1; // Increase quantity if product already exists in cart
-    } else {
-        cart.push({ product: productName, image, price, quantity: 1 }); // Add new product to cart
-    }
+// Dropdown Variables
+const dropdownButton = document.querySelector('.dropbtn');
+const dropdownContent = document.querySelector('.dropdown-content');
 
-    // Update the cart display and cart count
-    updateCartDisplay();
-    updateCartCount(); // Update cart count immediately after adding an item
-    showNotification(productName); // Show notification
+// Toggle the visibility of the cart modal
+cartIcon.addEventListener('click', function() {
+  cartModal.classList.toggle('show');
+  if (cartModal.classList.contains('show')) {
+    // When opening the cart, remember the current scroll position
+    lastScrollPosition = window.scrollY;
+  }
+});
+
+// Function to add items to the cart
+function addToCart(productButton) {
+  const card = productButton.closest('.card');
+  const productName = card.getAttribute('data-name');
+  const productPrice = parseFloat(card.getAttribute('data-price'));
+
+  // Check if the product already exists in the cart
+  const existingItem = cartItems.find(item => item.name === productName);
+
+  if (existingItem) {
+    // If the product already exists, increase the quantity
+    existingItem.quantity += 1;
+  } else {
+    // If the product doesn't exist, add it to the cart
+    cartItems.push({ name: productName, price: productPrice, quantity: 1 });
+  }
+
+  // Update cart count and cart display
+  cartCount += 1;
+  cartCountElement.textContent = cartCount;
+
+  // Show notification
+  showNotification(`${productName} has been added to your cart!`);
+
+  // Update the cart view
+  updateCart();
 }
 
-// Function to show notification when an item is added to the cart
-function showNotification(productName) {
-    const notification = document.createElement('div');
-    notification.classList.add('notification');
-    notification.innerText = `${productName} has been added to your cart!`;
+// Function to show the notification
+function showNotification(message) {
+  notification.textContent = message;
+  notification.style.display = 'block';
 
-    document.body.appendChild(notification);
-
-    // Remove notification after 3 seconds
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
+  // Hide notification after 3 seconds
+  setTimeout(function() {
+    notification.style.display = 'none';
+  }, 3000);
 }
 
-// Function to update the cart display inside the sidebar
-function updateCartDisplay() {
-    const cartItemsList = document.getElementById('cart-items-list');
-    cartItemsList.innerHTML = ''; // Clear the existing cart display
+// Function to update the cart view
+function updateCart() {
+  cartItemsList.innerHTML = ''; // Clear current items from the cart
 
-    if (cart.length === 0) {
-        cartItemsList.innerHTML = '<li>Your cart is empty.</li>';
-    } else {
-        cart.forEach(item => {
-            const cartItemElement = document.createElement('li');
-            cartItemElement.classList.add('cart-item');
-            cartItemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.product}">
-                <span>${item.product} - ₹${item.price} x ${item.quantity}</span>
-                <button onclick="removeFromCart('${item.product}')">Remove One</button>
-                <button onclick="addToCart('${item.product}', '${item.image}', ${item.price})">Add</button> <!-- Add more button -->
-            `;
-            cartItemsList.appendChild(cartItemElement);
-        });
-    }
-}
+  let totalPrice = 0;
 
-// Function to update the cart count in the header
-function updateCartCount() {
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-    const cartBtn = document.getElementById('cart-btn');
+  // Loop through the cartItems array and create an <li> for each item
+  cartItems.forEach(item => {
+    const li = document.createElement('li');
+    li.classList.add('cart-item');
+
+    // Add product name, quantity, price, and buttons
+    li.innerHTML = `
+      <span>${item.name} - Rs ${item.price.toFixed(2)} x ${item.quantity}</span>
+      <button onclick="increaseQuantity('${item.name}')">+</button>
+      <button onclick="decreaseQuantity('${item.name}')">-</button>
+      <button onclick="removeItem('${item.name}')">Remove</button>
+    `;
     
-    if (cartCount > 0) {
-        cartBtn.textContent = `Cart (${cartCount})`; // Show the total quantity in the navbar
-    } else {
-        cartBtn.textContent = `Cart`; // Show only 'Cart' if there are no items
-    }
+    // Append the item to the cart list
+    cartItemsList.appendChild(li);
+
+    // Add to total price
+    totalPrice += item.price * item.quantity;
+  });
+
+  // Update the total price
+  document.getElementById('total-price').textContent = `Rs ${totalPrice.toFixed(2)}`;
 }
 
-// Function to remove one unit of an item from the cart
-function removeFromCart(productName) {
-    const existingProduct = cart.find(item => item.product === productName);
-
-    if (existingProduct) {
-        if (existingProduct.quantity > 1) {
-            existingProduct.quantity -= 1; // Decrease quantity if more than 1
-        } else {
-            cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
-        }
-    }
-
-    updateCartDisplay();
-    updateCartCount();
+// Function to increase quantity of an item
+function increaseQuantity(name) {
+  const item = cartItems.find(item => item.name === name);
+  if (item) {
+    item.quantity += 1;
+    cartCount += 1; // Increment the cart count
+    cartCountElement.textContent = cartCount; // Update the display
+    updateCart();
+  }
 }
 
-// Function to calculate total price
-function getTotalPrice() {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+// Function to decrease quantity of an item
+function decreaseQuantity(name) {
+  const item = cartItems.find(item => item.name === name);
+  if (item && item.quantity > 1) {
+    item.quantity -= 1;
+    cartCount -= 1; // Decrement the cart count
+    cartCountElement.textContent = cartCount; // Update the display
+    updateCart();
+  }
 }
 
-// Function to update total price in the cart sidebar
-function updateCartTotal() {
-    const cartTotal = document.getElementById('cart-total');
-    cartTotal.textContent = `Total: ₹${getTotalPrice().toFixed(2)}`;
+// Function to remove an item from the cart
+function removeItem(name) {
+  const itemIndex = cartItems.findIndex(item => item.name === name);
+  if (itemIndex !== -1) {
+    cartCount -= cartItems[itemIndex].quantity;
+    cartItems.splice(itemIndex, 1);
+    cartCountElement.textContent = cartCount; // Update the display
+    updateCart();
+  }
 }
 
-// Function to toggle the visibility of the cart sidebar
-function toggleCart() {
-    const cartSidebar = document.getElementById('cart-sidebar');
-    cartSidebar.classList.toggle('open');  // Toggle the 'open' class to show/hide the cart
-    updateCartTotal(); // Update total when cart is shown
+// Checkout function (simple placeholder)
+function checkout() {
+  alert('Proceeding to Checkout...');
 }
 
-// Add event listener for cart button
-document.getElementById('cart-btn').addEventListener('click', toggleCart);
+// Close Cart Modal and Return to Previous Scroll Position
+function closeCart() {
+  cartModal.classList.remove('show');
+  window.scrollTo(0, lastScrollPosition); // Scroll back to the previous position
+}
 
-// Add event listener for close button in the cart sidebar
-document.getElementById('close-cart').addEventListener('click', toggleCart);
+// Add the closeCart function to a "Close" button in the cart modal
+document.querySelector('.close-btn').addEventListener('click', closeCart);
 
-// Add event listeners for "Add to Cart" buttons on each product
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-        const productElement = button.closest('.product');
-        const productName = productElement.querySelector('.product-name').textContent;
-        const image = productElement.querySelector('img').src;
-        const price = parseFloat(productElement.querySelector('.product-price').textContent.replace('₹', ''));
+// Dropdown functionality
+dropdownButton.addEventListener('click', function(event) {
+  event.stopPropagation(); // Prevent closing dropdown if clicking inside
+  dropdownContent.classList.toggle('show');
+});
 
-        addToCart(productName, image, price);
-    });
+// Close the dropdown if you click outside of it
+document.addEventListener('click', function(event) {
+  if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) {
+    dropdownContent.classList.remove('show');
+  }
 });
