@@ -1,109 +1,148 @@
-// Initialize cart array
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// Initialize cart variables
+let cartCount = 0;
+let cartItems = [];
+let lastScrollPosition = 0;
 
-// Function to add a product to the cart
-function addToCart(productName, image, price) {
-    const existingProduct = cart.find(item => item.product === productName);
+const cartIcon = document.getElementById('cart-icon');
+const cartModal = document.getElementById('cartModal');
+const cartItemsList = document.getElementById('cart-items');
+const totalPriceElement = document.getElementById('total-price');
 
-    if (existingProduct) {
-        existingProduct.quantity += 1; // Increase quantity if product already exists in cart
-    } else {
-        cart.push({ product: productName, image, price, quantity: 1 }); // Add new product to cart
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    // Update the cart display and cart count
-    updateCartDisplay();
-    updateCartCount(); // Update cart count immediately after adding an item
-}
+// Notification container (used to display the notifications)
+const notificationContainer = document.getElementById('notification-container');
 
-// Function to update the cart display inside the sidebar
-function updateCartDisplay() {
-    const cartItemsList = document.getElementById('cart-items-list');
-    cartItemsList.innerHTML = ''; // Clear the existing cart display
-
-    if (cart.length === 0) {
-        cartItemsList.innerHTML = '<li>Your cart is empty.</li>';
-    } else {
-        cart.forEach(item => {
-            const cartItemElement = document.createElement('li');
-            cartItemElement.classList.add('cart-item');
-            cartItemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.product}">
-                <span>${item.product} - ₹${item.price} x ${item.quantity}</span>
-                <button onclick="removeFromCart('${item.product}')">Remove One</button>
-                <button onclick="addToCart('${item.product}', '${item.image}', ${item.price})">Add</button> <!-- Add more button -->
-            `;
-            cartItemsList.appendChild(cartItemElement);
-        });
-    }
-}
-
-// Function to update the cart count in the header
-function updateCartCount() {
-    const cartCount = cart.length;
-    const cartBtn = document.getElementById('cart-btn');
-    
-    if (cartCount > 0) {
-        cartBtn.textContent = `Cart (${cartCount})`; // Show the total quantity in the navbar
-    } else {
-        cartBtn.textContent = `Cart`; // Show only 'Cart' if there are no items
-    }
-}
-
-// Function to remove one unit of an item from the cart
-function removeFromCart(productName) {
-    // const existingProduct = cart.find(item => item.product === productName);
-
-    // if (existingProduct) {
-    //     if (existingProduct.quantity > 1) {
-    //         existingProduct.quantity -= 1; // Decrease quantity if more than 1
-    //     } else {
-    //         cart = cart.filter(item => item.product !== productName); // Remove the product if quantity is 1
-    //     }
-    // }
-
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    updateCartDisplay();
-    updateCartCount();
-}
-
-// Function to calculate total price
-function getTotalPrice() {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-}
-
-// Function to update total price in the cart sidebar
-function updateCartTotal() {
-    const cartTotal = document.getElementById('cart-total');
-    cartTotal.textContent = `Total: ₹${getTotalPrice().toFixed(2)}`;
-}
-
-// Function to toggle the visibility of the cart sidebar
-function toggleCart() {
-    const cartSidebar = document.getElementById('cart-sidebar');
-    cartSidebar.classList.toggle('open');  // Toggle the 'open' class to show/hide the cart
-    updateCartTotal(); // Update total when cart is shown
-}
-
-// Add event listener for cart button
-document.getElementById('cart-btn').addEventListener('click', toggleCart);
-
-// Add event listener for close button in the cart sidebar
-document.getElementById('close-cart').addEventListener('click', toggleCart);
-
-// Add event listeners for "Add to Cart" buttons on each product
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-        const productElement = button.closest('.product');
-        const productName = productElement.querySelector('.product-name').textContent;
-        const image = productElement.querySelector('img').src;
-        const price = parseFloat(productElement.querySelector('.product-price').textContent.replace('₹', ''));
-
-        addToCart(productName, image, price);
-    });
+// Toggle the visibility of the cart modal
+cartIcon.addEventListener('click', function () {
+  cartModal.classList.toggle('show');
+  if (cartModal.classList.contains('show')) {
+    lastScrollPosition = window.scrollY;  // Remember current scroll position when opening the cart
+  }
 });
 
-updateCartCount();
-updateCartDisplay();
+// Close Cart Modal
+function closeCart() {
+  cartModal.classList.remove('show');
+  window.scrollTo(0, lastScrollPosition);
+}
+
+// Add to Cart
+function addToCart(button) {
+  const card = button.closest('.card');
+  const productName = card.getAttribute('data-name');  // Get the product name dynamically
+  const productPrice = parseFloat(card.getAttribute('data-price'));
+  const productImage = card.getAttribute('data-img');  // Get the image URL dynamically
+
+  // Check if the product already exists in the cart
+  const existingItem = cartItems.find(item => item.name === productName);
+
+  if (existingItem) {
+    // If the product already exists, increase the quantity
+    existingItem.quantity += 1;
+  } else {
+    // If the product doesn't exist, add it to the cart
+    cartItems.push({ name: productName, price: productPrice, image: productImage, quantity: 1 });
+  }
+
+  // Update the cart count
+  cartCount += 1;
+  document.getElementById('cart-count').textContent = cartCount;
+
+  // Show notification with correct product name
+  showNotification(productName);
+
+  // Update the cart view
+  updateCart();
+}
+
+// Show Notification with Animation
+function showNotification(productName) {
+  const notification = document.createElement('div');
+  notification.classList.add('notification');
+
+  // Create smiley face element
+  const smiley = document.createElement('span');
+  smiley.classList.add('smiley');
+  smiley.textContent = '😊';  // Smiley face emoji
+
+  // Create text for the notification
+  const notificationText = document.createElement('span');
+  notificationText.textContent = `${productName} added to cart`;  // This dynamically shows the product name
+
+  // Append smiley and text to the notification
+  notification.appendChild(smiley);
+  notification.appendChild(notificationText);
+
+  // Append the notification to the container
+  notificationContainer.appendChild(notification);
+
+  // Remove notification after 4 seconds (to match animation time)
+  setTimeout(() => {
+    notificationContainer.removeChild(notification);
+  }, 4000); // Timeout is 4s to match the animation duration
+}
+
+// Update Cart Display
+function updateCart() {
+  cartItemsList.innerHTML = ''; // Clear the cart
+
+  let totalPrice = 0;
+
+  // Loop through cart items and create cart item list elements
+  cartItems.forEach(item => {
+    totalPrice += item.price * item.quantity;
+
+    const cartItem = document.createElement('li');
+    cartItem.classList.add('cart-item');
+
+    // Create the cart item element with the image, name, price, quantity, etc.
+    cartItem.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" width="50" />  <!-- Product Image -->
+      <p>${item.name} x${item.quantity}</p>  <!-- Product Name and Quantity -->
+      <p>Rs ${item.price * item.quantity}</p>  <!-- Total Price for that item -->
+      <div class="adjust-quantity">
+        <button onclick="increaseQuantity('${item.name}')">+</button>
+        <button onclick="decreaseQuantity('${item.name}')">-</button>
+      </div>
+      <button onclick="removeFromCart('${item.name}')">Remove</button>
+    `;
+    cartItemsList.appendChild(cartItem);
+  });
+
+  // Update the total price in the cart
+  totalPriceElement.textContent = `Rs ${totalPrice.toFixed(2)}`;
+}
+
+// Increase Item Quantity
+function increaseQuantity(name) {
+  const item = cartItems.find(item => item.name === name);
+  if (item) {
+    item.quantity += 1;
+    cartCount += 1;
+    updateCart();
+  }
+}
+
+// Decrease Item Quantity
+function decreaseQuantity(name) {
+  const item = cartItems.find(item => item.name === name);
+  if (item && item.quantity > 1) {
+    item.quantity -= 1;
+    cartCount -= 1;
+    updateCart();
+  }
+}
+
+// Remove Item from Cart
+function removeFromCart(name) {
+  const itemIndex = cartItems.findIndex(item => item.name === name);
+  if (itemIndex > -1) {
+    cartCount -= cartItems[itemIndex].quantity;
+    cartItems.splice(itemIndex, 1);
+    updateCart();
+  }
+}
+
+// Checkout (Placeholder for now)
+function checkout() {
+  alert('Proceeding to Checkout...');
+}

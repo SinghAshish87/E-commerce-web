@@ -1,61 +1,57 @@
-// Retrieve the cart from localStorage (or use a session variable if necessary)
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve the cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Function to update the cart display on the cart page
-function updateCartDisplay() {
+    // Get elements to display cart items and total price
     const cartItemsList = document.getElementById('cart-items-list');
-    cartItemsList.innerHTML = ''; // Clear the existing list
-
-    if (cart.length === 0) {
-        cartItemsList.innerHTML = '<li>Your cart is empty.</li>';
-    } else {
-        cart.forEach(item => {
-            const cartItemElement = document.createElement('li');
-            cartItemElement.classList.add('cart-item');
-            cartItemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.product}" width="50">
-                <span>${item.product} - ₹${item.price} x ${item.quantity}</span>
-                <button onclick="removeFromCart('${item.product}')">Remove One</button>
-            `;
-            cartItemsList.appendChild(cartItemElement);
-        });
-    }
-}
-
-// Remove item from cart
-function removeFromCart(productName) {
-    const existingProduct = cart.find(item => item.product === productName);
-
-    if (existingProduct) {
-        if (existingProduct.quantity > 1) {
-            existingProduct.quantity -= 1;
-        } else {
-            cart = cart.filter(item => item.product !== productName);
-        }
-    }
-
-    // Save the updated cart to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartDisplay();
-    updateCartTotal();
-}
-
-// Calculate total price
-function getTotalPrice() {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-}
-
-// Update total price
-function updateCartTotal() {
     const cartTotal = document.getElementById('cart-total');
-    cartTotal.textContent = `Total: ₹${getTotalPrice().toFixed(2)}`;
-}
 
-// Add event listener for closing the cart sidebar
-document.getElementById('close-cart').addEventListener('click', () => {
-    window.location.href = 'index.html'; // Go back to the main page
+    // If the cart is empty, show a message
+    if (cart.length === 0) {
+        cartItemsList.innerHTML = '<p>Your cart is empty!</p>';
+        cartTotal.textContent = 'Total: Rs0.00';
+    } else {
+        let totalPrice = 0;
+        
+        // Loop through cart items and create HTML for each product
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" width="50" />
+                <span>${item.name}</span>
+                <span>${item.price}</span>
+                <button class="remove-item" data-name="${item.name}">Remove</button>
+            `;
+            cartItemsList.appendChild(itemElement);
+            
+            // Add the price to the total (assuming price format: "Rs 1800")
+            totalPrice += parseFloat(item.price.replace('Rs', '').trim());
+        });
+
+        // Update the total price
+        cartTotal.textContent = `Total: Rs${totalPrice.toFixed(2)}`;
+    }
+
+    // Remove item from cart
+    document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function() {
+            const itemName = this.getAttribute('data-name');
+
+            // Remove the item from the cart array
+            cart = cart.filter(item => item.name !== itemName);
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Refresh the page to update the cart display
+            location.reload();
+        });
+    });
+
+    // Optional: Clear cart functionality (Clear all items)
+    document.getElementById('clear-cart').addEventListener('click', () => {
+        localStorage.removeItem('cart');
+        location.reload(); // Refresh to show the cart is now empty
+    });
 });
-
-// Initial display of the cart
-updateCartDisplay();
-updateCartTotal();
