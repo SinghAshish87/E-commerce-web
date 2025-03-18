@@ -8,12 +8,12 @@ body {
 
 /* Header and Navigation */
 nav {
-  background: linear-gradient(90deg, #051e71, #000313);
+  background: linear-gradient(90deg, #051e71, #3b7ebc);
   padding: 12px 3%;
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
   border-radius: 50px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 10px rgba(221, 16, 16, 0.5);
   /* position: sticky; */
   top: 5px;
   z-index: 1000;
@@ -34,7 +34,7 @@ nav ul li a {
 }
 
 header {
-  color: #fff;
+  color: #131412;
   padding: 10px 20px;
   display: flex;
   text-align: center;
@@ -390,4 +390,15 @@ h1:hover {
 h2 {
   text-align: center;
   font-weight: bold;
+}
+.ashu{
+  text-align: center;
+}
+
+.ashish{
+  text-align: center;
+}
+
+.singh{
+  text-align: center;
 }
