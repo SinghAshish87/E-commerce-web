@@ -1,0 +1,30 @@
+
+?php
+// Your Secret Key (replace with the actual secret key you received from Google)
+$recaptchaSecret = 'YOUR_SECRET_KEY';
+
+// Get the reCAPTCHA response from the form submission
+$recaptchaResponse = $_POST['g-recaptcha-response'];
+
+// Verify the CAPTCHA with Google
+$verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+$response = file_get_contents($verifyURL . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+$responseKeys = json_decode($response, true);
+
+// Check if the reCAPTCHA was successful
+if (intval($responseKeys["success"]) !== 1) {
+    // CAPTCHA verification failed
+    echo "CAPTCHA verification failed. Please try again.";
+} else {
+    // CAPTCHA verification successful
+    // Proceed to process the form (e.g., save data to database or send an email)
+    
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    // Example: Save data to a database or send an email
+    // For now, just echo a success message
+    echo "CAPTCHA verification successful. Your form has been submitted.";
+}
+?>
