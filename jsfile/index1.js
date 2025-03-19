@@ -1,152 +1,132 @@
-// Cart variables
-let cartCount = 0; // Initialize cart count to 0
-let cartItems = []; // Array to store cart items
+// ==================== Cart Variables ====================
+let cartItems = JSON.parse(localStorage.getItem("cart")) || []; // Array to store cart items
+let cartCount = cartItems.reduce((total, item) => total + item.quantity, 0); // Initialize cart count based on quantity
 let lastScrollPosition = 0; // Variable to store the last scroll position
 
-const cartIcon = document.getElementById('cart-icon');
-const cartCountElement = document.getElementById('cart-count');
-const cartModal = document.querySelector('.cart-modal');
-const cartItemsList = document.getElementById('cart-items');
-const notification = document.querySelector('.notification');
+// ==================== DOM Elements ====================
+const cartIcon = document.getElementById("cart-icon");
+const cartCountElement = document.getElementById("cart-count");
+const cartModal = document.querySelector(".cart-modal");
+const cartItemsList = document.getElementById("cart-items");
+const notification = document.querySelector(".notification");
+const totalPriceElement = document.getElementById("total-price");
+const closeBtn = document.querySelector(".close-btn");
+const dropdownButton = document.querySelector(".dropbtn");
+const dropdownContent = document.querySelector(".dropdown-content");
 
-// Dropdown Variables
-const dropdownButton = document.querySelector('.dropbtn');
-const dropdownContent = document.querySelector('.dropdown-content');
+// ==================== Event Listeners ====================
+cartIcon.addEventListener("click", toggleCartModal);
+if (closeBtn) closeBtn.addEventListener("click", closeCart);
+dropdownButton.addEventListener("click", toggleDropdown);
+document.addEventListener("click", closeDropdown);
 
-// Toggle the visibility of the cart modal
-cartIcon.addEventListener('click', function() {
-  cartModal.classList.toggle('show');
-  if (cartModal.classList.contains('show')) {
-    // When opening the cart, remember the current scroll position
+// ==================== Cart Functions ====================
+function toggleCartModal() {
+  cartModal.classList.toggle("show");
+  if (cartModal.classList.contains("show")) {
     lastScrollPosition = window.scrollY;
   }
-});
-
-// Modified addToCart function to handle 24 buttons with dynamic data
-function addToCart(buttonNumber) {
-  // Create a mock card-like structure for the product based on the button number
-  const productName = `Product ${buttonNumber}`;
-  const productPrice = (Math.random() * 100).toFixed(2); // Random price for the sake of demo
-
-  // Check if the product already exists in the cart
-  const existingItem = cartItems.find(item => item.name === productName);
-
-  if (existingItem) {
-    // If the product already exists, increase the quantity
-    existingItem.quantity += 1;
-  } else {
-    // If the product doesn't exist, add it to the cart
-    cartItems.push({ name: productName, price: parseFloat(productPrice), quantity: 1 });
-  }
-
-  // Update cart count and cart display
-  cartCount += 1;
-  cartCountElement.textContent = cartCount;
-
-  // Show notification
-  showNotification(`${productName} has been added to your cart!`);
-
-  // Update the cart view
   updateCart();
 }
 
-// Function to show the notification
-function showNotification(message) {
-  notification.textContent = message;
-  notification.style.display = 'block';
-
-  // Hide notification after 3 seconds
-  setTimeout(function() {
-    notification.style.display = 'none';
-  }, 3000);
+function updateCartCount() {
+  cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  cartCountElement.textContent = cartCount;
 }
 
-// Function to update the cart view
-function updateCart() {
-  cartItemsList.innerHTML = ''; // Clear current items from the cart
+function addToCart(buttonNumber) {
+  // const productName = `Product ${buttonNumber}`;
+  let productCard = buttonNumber.closest(".product-info");
+  let productName = productCard.querySelector("h2:nth-child(1)").innerText;
+  const productPrice = (Math.random() * 100).toFixed(2);
 
-  let totalPrice = 0;
+  let existingItem = cartItems.find((item) => item.name === productName);
 
-  // Loop through the cartItems array and create an <li> for each item
-  cartItems.forEach(item => {
-    const li = document.createElement('li');
-    li.classList.add('cart-item');
-
-    // Add product name, quantity, price, and buttons
-    li.innerHTML = `
-      <span>${item.name} - Rs ${item.price.toFixed(2)} x ${item.quantity}</span>
-      <button onclick="increaseQuantity('${item.name}')">+</button>
-      <button onclick="decreaseQuantity('${item.name}')">-</button>
-      <button onclick="removeItem('${item.name}')">Remove</button>
-    `;
-    
-    // Append the item to the cart list
-    cartItemsList.appendChild(li);
-
-    // Add to total price
-    totalPrice += item.price * item.quantity;
+  if (existingItem) {
+    showNotification("This product is already in your cart!"); // Message dikhao, dobara add mat karo
+    return; // Function yahin stop kar do
+  }
+  cartItems.push({
+    name: productName,
+    price: productPrice,
+    quantity: 1,
   });
 
-  // Update the total price
-  document.getElementById('total-price').textContent = `Rs ${totalPrice.toFixed(2)}`;
+  updateCartCount();
+  updateCart();
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  showNotification(`${productName} has been added to your cart!`);
 }
 
-// Function to increase quantity of an item
-function increaseQuantity(name) {
-  const item = cartItems.find(item => item.name === name);
+function updateCart() {
+  cartItemsList.innerHTML = "";
+  let totalPrice = 0;
+
+  cartItems.forEach((item) => {
+    const li = document.createElement("li");
+    li.classList.add("cart-item");
+    li.innerHTML = `
+      <span>${item.name} - Rs ${item.price} x ${item.quantity}</span>
+      <button onclick="changeQuantity('${item.name}', 1)">+</button>
+      <button onclick="changeQuantity('${item.name}', -1)">-</button>
+      <button onclick="removeItem('${item.name}')">Remove</button>
+    `;
+    cartItemsList.appendChild(li);
+    totalPrice += item.price * item.quantity;
+  });
+  totalPriceElement.textContent = `Rs ${totalPrice.toFixed(2)}`;
+}
+
+function changeQuantity(name, change) {
+  const item = cartItems.find((item) => item.name === name);
   if (item) {
-    item.quantity += 1;
-    cartCount += 1; // Increment the cart count
-    cartCountElement.textContent = cartCount; // Update the display
-    updateCart();
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      removeItem(name);
+    }
   }
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  updateCart();
 }
 
-// Function to decrease quantity of an item
-function decreaseQuantity(name) {
-  const item = cartItems.find(item => item.name === name);
-  if (item && item.quantity > 1) {
-    item.quantity -= 1;
-    cartCount -= 1; // Decrement the cart count
-    cartCountElement.textContent = cartCount; // Update the display
-    updateCart();
-  }
-}
-
-// Function to remove an item from the cart
 function removeItem(name) {
-  const itemIndex = cartItems.findIndex(item => item.name === name);
-  if (itemIndex !== -1) {
-    cartCount -= cartItems[itemIndex].quantity;
-    cartItems.splice(itemIndex, 1);
-    cartCountElement.textContent = cartCount; // Update the display
-    updateCart();
-  }
+  cartItems;
+  cartItems = cartItems.filter((item) => item.name !== name);
+
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  updateCartCount();
+  updateCart();
 }
 
-// Checkout function (simple placeholder)
 function checkout() {
-  alert('Proceeding to Checkout...');
+  alert("Proceeding to Checkout...");
 }
 
-// Close Cart Modal and Return to Previous Scroll Position
 function closeCart() {
-  cartModal.classList.remove('show');
-  window.scrollTo(0, lastScrollPosition); // Scroll back to the previous position
+  cartModal.classList.remove("show");
+  window.scrollTo(0, lastScrollPosition);
 }
 
-// Add the closeCart function to a "Close" button in the cart modal
-document.querySelector('.close-btn').addEventListener('click', closeCart);
+// ==================== UI Functions ====================
+function showNotification(message) {
+  notification.textContent = message;
+  notification.style.display = "block";
+  setTimeout(() => (notification.style.display = "none"), 3000);
+}
 
-// Dropdown functionality
-dropdownButton.addEventListener('click', function(event) {
-  event.stopPropagation(); // Prevent closing dropdown if clicking inside
-  dropdownContent.classList.toggle('show');
-});
+function toggleDropdown(event) {
+  event.stopPropagation();
+  dropdownContent.classList.toggle("show");
+}
 
-// Close the dropdown if you click outside of it
-document.addEventListener('click', function(event) {
-  if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) {
-    dropdownContent.classList.remove('show');
+function closeDropdown(event) {
+  if (
+    !dropdownButton.contains(event.target) &&
+    !dropdownContent.contains(event.target)
+  ) {
+    dropdownContent.classList.remove("show");
   }
-});
+}
+
+// ==================== Initialize Cart Count ====================
+updateCartCount();
