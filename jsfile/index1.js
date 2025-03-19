@@ -90,7 +90,6 @@ function changeQuantity(name, change) {
 }
 
 function removeItem(name) {
-  cartItems;
   cartItems = cartItems.filter((item) => item.name !== name);
 
   localStorage.setItem("cart", JSON.stringify(cartItems));
