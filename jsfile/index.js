@@ -1,87 +1,184 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];  // Array to store cart items
+// ==================== Cart Variables ====================
+let cartItems = JSON.parse(localStorage.getItem("cart")) || []; // Array to store cart items
+let cartCount = cartItems.reduce((total, item) => total + item.quantity, 0); // Initialize cart count based on quantity
+let lastScrollPosition = 0; // Variable to store the last scroll position
 
-const fetch = () => {
-    document.getElementById('cartCount').innerText = cart.length;
+// ==================== DOM Elements ====================
+const cartIcon = document.getElementById("cart-icon");
+const cartCountElement = document.getElementById("cart-count");
+const cartModal = document.querySelector(".cart-modal");
+const cartItemsList = document.getElementById("cart-items");
+const notification = document.querySelector(".notification");
+const totalPriceElement = document.getElementById("total-price");
+const closeBtn = document.querySelector(".close-btn");
+const dropdownButton = document.querySelector(".dropbtn");
+const dropdownContent = document.querySelector(".dropdown-content");
+
+// ==================== Event Listeners ====================
+cartIcon.addEventListener("click", toggleCartModal);
+if (closeBtn) closeBtn.addEventListener("click", closeCart);
+dropdownButton.addEventListener("click", toggleDropdown);
+document.addEventListener("click", closeDropdown);
+
+// ==================== Cart Functions ====================
+function toggleCartModal() {
+  cartModal.classList.toggle("show");
+  if (cartModal.classList.contains("show")) {
+    lastScrollPosition = window.scrollY;
+  }
+  updateCart();
 }
-fetch();
-// Function to add product to cart
-function addToCart(productName, productPrice, productImage) {
-    // Create product object
-    const product = {
-        name: productName,
-        price: productPrice,
-        image: productImage
-    };
 
-    // Add product to cart array
-    cart.push(product);
-    // Update cart count
-    fetch();
-
-    // Update cart dropdown with product details
-    updateCartDropdown();
-
-    // Alert user that the product was added
-    alert(`${productName} has been added to your cart!`);
-    localStorage.setItem("cart", JSON.stringify(cart));
+function updateCartCount() {
+  cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  cartCountElement.textContent = cartCount;
 }
 
-// Function to update cart dropdown
-function updateCartDropdown() {
-    const cartDropdownMenu = document.getElementById('cartDropdownMenu');
-    cartDropdownMenu.innerHTML = '';  // Clear previous cart items
+function addToCart(buttonNumber) {
+  // const productName = `Product ${buttonNumber}`;
+  let productCard = buttonNumber.closest(".product-info");
+  let productName = productCard.querySelector("h2:nth-child(1)").innerText;
+  const productPrice = (Math.random() * 100).toFixed(2);
 
-    let totalAmount = 0;
+  let existingItem = cartItems.find((item) => item.name === productName);
 
-    // Loop through the cart and display products in the dropdown
-    cart.forEach((product, index) => {
-        // Create list item for each product
-        const li = document.createElement('li');
-        li.classList.add('cart-item');
+  if (existingItem) {
+    showNotification("This product is already in your cart!"); // Message dikhao, dobara add mat karo
+    return; // Function yahin stop kar do
+  }
+  cartItems.push({
+    name: productName,
+    price: productPrice,
+    quantity: 1,
+  });
 
-        li.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" width="30" height="30" style="border-radius: 5px;">
-            ${product.name} - ₹${product.price}
-            <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
-        `;
+  updateCartCount();
+  updateCart();
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  showNotification(`${productName} has been added to your cart!`);
+}
 
-        cartDropdownMenu.appendChild(li);
+function updateCart() {
+  cartItemsList.innerHTML = "";
+  let totalPrice = 0;
 
-        // Calculate total amount
-        totalAmount += product.price;
+  cartItems.forEach((item) => {
+    const li = document.createElement("li");
+    li.classList.add("cart-item");
+    li.innerHTML = `
+      <span>${item.name} - Rs ${item.price} x ${item.quantity}</span>
+      <button onclick="changeQuantity('${item.name}', 1)">+</button>
+      <button onclick="changeQuantity('${item.name}', -1)">-</button>
+      <button onclick="removeItem('${item.name}')">Remove</button>
+    `;
+    cartItemsList.appendChild(li);
+    totalPrice += item.price * item.quantity;
+  });
+  totalPriceElement.textContent = `Rs ${totalPrice.toFixed(2)}`;
+}
+
+function changeQuantity(name, change) {
+  const item = cartItems.find((item) => item.name === name);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      removeItem(name);
+    }
+  }
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  updateCart();
+}
+
+function removeItem(name) {
+  cartItems = cartItems.filter((item) => item.name !== name);
+
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  updateCartCount();
+  updateCart();
+}
+
+function checkout() {
+  alert("Proceeding to Checkout...");
+}
+
+function closeCart() {
+  cartModal.classList.remove("show");
+  window.scrollTo(0, lastScrollPosition);
+}
+
+// ==================== UI Functions ====================
+function showNotification(message) {
+  notification.textContent = message;
+  notification.style.display = "block";
+  setTimeout(() => (notification.style.display = "none"), 3000);
+}
+
+function toggleDropdown(event) {
+  event.stopPropagation();
+  dropdownContent.classList.toggle("show");
+}
+
+function closeDropdown(event) {
+  if (
+    !dropdownButton.contains(event.target) &&
+    !dropdownContent.contains(event.target)
+  ) {
+    dropdownContent.classList.remove("show");
+  }
+}
+
+// ==================== Initialize Cart Count ====================
+updateCartCount();
+
+
+
+// slider
+
+  // Get all the dots and slides
+  const dots = document.querySelectorAll('.dot');
+  const slides = document.querySelectorAll('.slide');
+  const slideContainers = document.querySelectorAll('.slide-content-container'); // Target the content container
+  const slideImages = document.querySelectorAll('.slide-image'); // To keep the images fixed
+
+  let currentSlideIndex = 0; // Keep track of the current slide index
+
+  // Function to update the active slide based on the index
+  function updateSlide(index) {
+    // Remove the active class from all slides and dots
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Add the active class to the current slide and dot
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    
+    // Move only the content of the slide (not the image)
+    const offset = -100 * index; // Move to the correct position
+    slideContainers.forEach(container => container.style.transform = `translateX(${offset}%)`);
+  }
+
+  // Event listener for dots
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = dot.getAttribute('data-slide'); // Get the index from the dot's data-slide attribute
+      currentSlideIndex = index; // Update the current slide index
+      updateSlide(currentSlideIndex); // Show the clicked slide
     });
+  });
 
-    // Display total amount at the bottom of the dropdown
-    const totalLi = document.createElement('li');
-    totalLi.innerHTML = `<strong>Total: ₹${totalAmount}</strong>`;
-    cartDropdownMenu.appendChild(totalLi);
-}
+  // Function to automatically slide every 4 seconds
+  function autoSlide() {
+    setInterval(() => {
+      // Increment the current slide index, and loop back to 0 if needed
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      updateSlide(currentSlideIndex); // Show the next slide
+    }, 4000); // 4 seconds interval
+  }
 
-// Function to handle the "Add to Cart" button click
-function onAddToCartClick(productName, productPrice, productImage) {
-    addToCart(productName, productPrice, productImage);
-}
+  // Start the auto-slide function when the page loads
+  autoSlide();
 
-// Function to remove product from cart
-function removeFromCart(index) {
-    // Remove the product from the cart array
-    cart.splice(index, 1);
-    // Update cart count
-    document.getElementById('cartCount').innerText = cart.length;
-    localStorage.setItem("cart", JSON.stringify(cart));
-     fetch();
-    // Update the cart dropdown
-    updateCartDropdown();
-}
+  // Initialize the first slide and dot as active
+  updateSlide(currentSlideIndex);
 
-// Example: Add event listener for "Add to Cart" buttons in product cards
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-        const productCard = button.closest('.product-card');
-        const productName = productCard.querySelector('h3').innerText;
-        const productPrice = parseInt(productCard.querySelector('.product-price').innerText.replace('₹', '').trim());
-        const productImage = productCard.querySelector('img').src;
 
-        onAddToCartClick(productName, productPrice, productImage);
-    });
-});
