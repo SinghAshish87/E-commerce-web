@@ -1,35 +1,37 @@
-// Function to toggle navigation menu
-function toggleMenu() {
-    var menu = document.getElementById("nav-menu");
-    menu.classList.toggle("show");
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = document.querySelectorAll(".image-slider");
 
-// Function to toggle dropdowns
-function toggleDropdown(dropdownId, element) {
-    var dropdown = document.getElementById(dropdownId);
-    var allDropdowns = document.querySelectorAll(".dropdown-menu");
+  sliders.forEach((slider) => {
+    const images = slider.querySelectorAll("img");
+    const dots = slider.querySelectorAll(".dot");
+    let index = 0;
 
-    // Hide other dropdowns
-    allDropdowns.forEach(function (item) {
-        if (item !== dropdown) {
-            item.style.display = "none";
-        }
+    const showImage = (i) => {
+      images.forEach((img, idx) => {
+        img.classList.toggle("active", idx === i);
+      });
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active-dot", idx === i);
+      });
+    };
+
+    slider.querySelector(".prev").addEventListener("click", () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
     });
 
-    // Toggle selected dropdown
-    if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-    } else {
-        dropdown.style.display = "block";
-    }
-}
+    slider.querySelector(".next").addEventListener("click", () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    });
 
-// Close menu when clicking outside
-document.addEventListener("click", function (event) {
-    var menu = document.getElementById("nav-menu");
-    var menuBtn = document.querySelector(".menu-btn");
+    dots.forEach((dot) => {
+      dot.addEventListener("click", (e) => {
+        index = parseInt(dot.getAttribute("data-index"));
+        showImage(index);
+      });
+    });
 
-    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
-        menu.classList.remove("show");
-    }
+    showImage(index);
+  });
 });

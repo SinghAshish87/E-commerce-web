@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Floating Card Design</title>
-  <link rel="stylesheet" href="../css/badminton.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Badminton Rackets - The PlayZone</title>
+  <link rel="stylesheet" href="../css/badminton.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
 
+  <!-- Notification Area -->
   <div id="notification-container"></div>
 
   <!-- Navbar -->
@@ -27,265 +28,132 @@
           <a href="../pages/baskit.html">Baskitball</a>
           <a href="../pages/jursey.html">Jersey</a>
         </div>
-        <a href="../pages/feedback.html">Feedback!</a>
       </div>
+      <a href="../pages/feedback.html">Feedback!</a>
     </div>
-    <!-- <a href="#" id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</a> -->
     <a href="#" id="cart-icon">Cart (<span id="cart-count">0</span>)</a>
   </nav>
 
+  <!-- Section Header -->
   <section class="centered-section">
-    <header>BASKIT BALLS</header>
-</section>
-  <!-- Product Cards Section -->
-  <div class="container-a">
-    <section class="product-section">
-      <div class="card-container">
-        <!-- Product 1 -->
-        <div class="card" data-name="NANOFLARE 1000ZZ" data-price="15999" data-img="../images/100zz.jpeg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/100zz.jpeg');">
-                <div class="overlay-content">
-                  <h2></h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-                <h2>NANOFLARE 1000ZZ</h2>
-                <h2> PRICE:15999</h2>
-                <!-- <p></p> -->
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <header>BADMINTON RACKETS</header>
+  </section>
 
-        <!-- 2 -->
-        <div class="card" data-name="ASTROCK 1DG" data-price="3599" data-img="../images/1dg.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/1dg.jpg');">
-                <div class="overlay-content">
-                  <h2></h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-                <h2>ASTROCK 1DG</h2>
-                <h2>TENSION :35LBS</h2>
-                <h2>Price:3599</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 3 -->
-        <div class="card" data-name="ASTROCK 3DG" data-price="4000" data-img="../images/3dg.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/3dg.jpg');">
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-               <h2>ASTROCK 3DG</h2>
-               <h2> PRICE:4000</h2>
-               <h2>TENSION:35LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 4 -->
-        <div class="card" data-name="ASTROCK 37i" data-price="2000" data-img="../images/73 light.webp">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/73 light.webp');"></div>
-              
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-               <h2>ASTROCK 37i</h2>
-               <h2>PRICE:2000</h2>
-               <h2>TENSION:30LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 5 -->
-        <div class="card" data-name="ASTROCK 99 PLAY" data-price="4500" data-img="../images/99play.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/99play.jpg');">
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-                <h2>ASTROCK 99 PLAY</h2>
-                <h2> PRICE:4500</h2>
-                <h2>TENSION:35LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 6 -->
-        <div class="card" data-name="ASTROCK 7DG" data-price="4000" data-img="../images/7dg.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/7dg.jpg');">  
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-               <h2>ASTROCK 7DG</h2>
-               <h2>PRICE:4000</h2>
-               <h2>TENSION:35LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 7 -->
-         
-        <div class="card" data-name="ASTROCK 7 PRO" data-price="4000" data-img="../images/arcsaver\ 7\ pro.jpeg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/arcsaver\ 7\ pro.jpeg');">
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-               <h2>ARCSAVER 7 PRO</h2>
-               <h2>PRICE:4000</h2>
-               <h2>TENSION:35LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card" data-name="ASTROCK 2DG" data-price="4000" data-img="../images/astrock37i.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/astrock37i.jpg');"> 
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-                <h2>ASTROCK 2DG</h2>
-                <h2>PRICE:4000</h2>
-                <h2>TENSION:35LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        
-        <!--8 -->
-        <div class="card" data-name="astrock attack 9" data-price="1600" data-img="../images/attack\ 9.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/attack\ 9.jpg');"> 
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-                <h2>ASTROCK ATTACK 9</h2>
-                <h2>PRICE:1600</h2>
-                <h2>TENSION:32LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <div class="card" data-name="NANORAY 70 LIGHT" data-price="2000" data-img="../images/nanoray2.jpg">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="background-image" style="background-image: url('../images/nanoray2.jpg');"> 
-                    <h2</h2>
-                    <!-- <i class="fas fa-arrow-right icon"></i> -->
-                  </div>
-                </div>
-              </div>
-              <div class="card-back">
-                <div class="product-info">
-                  <h2>BRAND YONIX</h2>
-                  <h2>NANORAY 70 LIGHT</h2>
-                  <h2>PRICE:2000</h2>
-                  <h2>TENSION:30LBS</h2>
-                  <button onclick="addToCart(this)">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-        </div>      
-         </div>
-
-  <!-- Cart Modal -->
-  <div class="cart-modal" id="cartModal">
-    <div class="cart-content">
-      <ul id="cart-items"></ul>
-      <p>Total: <span id="total-price">Rs 0.00</span></p>
-      <div class="cart-summary">
-        <button onclick="checkout()">Proceed to Checkout</button>
-        <button class="close-btn" onclick="closeCart()">Close</button>
+  <!-- Product Grid -->
+  <div class="product-grid">
+    <!-- Product Items -->
+    <!-- Repeat this block for each product -->
+    <div class="product-card" data-name="NANOFLARE 1000ZZ" data-price="15999">
+      <img src="../images/100zz.jpeg" alt="NANOFLARE 1000ZZ">
+      <div class="product-details">
+        <h3>NANOFLARE 1000ZZ</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹15,999</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
       </div>
     </div>
+
+    <div class="product-card" data-name="ASTROCK 1DG" data-price="3599">
+      <img src="../images/1dg.jpg" alt="ASTROCK 1DG">
+      <div class="product-details">
+        <h3>ASTROCK 1DG</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹3,599</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Add more product cards -->
+    <!-- Keep same structure, just change image, names, prices -->
+    <div class="product-card" data-name="ASTROCK 3DG" data-price="4000">
+      <img src="../images/3dg.jpg" alt="ASTROCK 3DG">
+      <div class="product-details">
+        <h3>ASTROCK 3DG</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹4,000</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="ASTROCK 37i" data-price="2000">
+      <img src="../images/73 light.webp" alt="ASTROCK 37i">
+      <div class="product-details">
+        <h3>ASTROCK 37i</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹2,000</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="ASTROCK 99 PLAY" data-price="4500">
+      <img src="../images/99play.jpg" alt="ASTROCK 99 PLAY">
+      <div class="product-details">
+        <h3>ASTROCK 99 PLAY</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹4,500</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="ASTROCK 7DG" data-price="4000">
+      <img src="../images/7dg.jpg" alt="ASTROCK 7DG">
+      <div class="product-details">
+        <h3>ASTROCK 7DG</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹4,000</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="ARCSAVER 7 PRO" data-price="4000">
+      <img src="../images/arcsaver 7 pro.jpeg" alt="ARCSAVER 7 PRO">
+      <div class="product-details">
+        <h3>ARCSAVER 7 PRO</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹4,000</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="ASTROCK 2DG" data-price="4000">
+      <img src="../images/astrock37i.jpg" alt="ASTROCK 2DG">
+      <div class="product-details">
+        <h3>ASTROCK 2DG</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹4,000</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="ASTROCK ATTACK 9" data-price="1600">
+      <img src="../images/attack 9.jpg" alt="ASTROCK ATTACK 9">
+      <div class="product-details">
+        <h3>ASTROCK ATTACK 9</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹1,600</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="NANORAY 70 LIGHT" data-price="2000">
+      <img src="../images/nanoray2.jpg" alt="NANORAY 70 LIGHT">
+      <div class="product-details">
+        <h3>NANORAY 70 LIGHT</h3>
+        <p>Brand: Yonix</p>
+        <p>Price: ₹2,000</p>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
   </div>
 
-  <div id="notification-container"></div>
-
-
+  <!-- JS -->
   <script>
-    // Get the dropdown button
     const dropbtn = document.querySelector('.dropbtn');
-
-    // Add click event to toggle the dropdown
-    dropbtn.addEventListener('click', function() {
-        const dropdown = dropbtn.parentElement; // Get the parent dropdown
-        dropdown.classList.toggle('show'); // Toggle the 'show' class on the dropdown
+    dropbtn.addEventListener('click', function () {
+      this.parentElement.classList.toggle('show');
     });
-</script>
-
+  </script>
 
   <script src="../jsfile/badminton.js"></script>
 </body>

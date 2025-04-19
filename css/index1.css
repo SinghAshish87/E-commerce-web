@@ -1593,3 +1593,101 @@ p{
       gap: 10px;
   }
 }
+
+
+
+
+/* Header and Section Background */
+
+header.discounts {
+  background: linear-gradient(135deg, #ffe9e3, #f6f1f1);
+  padding: 50px 20px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Discount Box */
+.discount .dis {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 1200px; /* or any width you want like 100% or 800px */
+  max-width: 2500px; /* set higher max width */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.discount {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+/* Icon and Heading */
+.ashish i {
+  font-size: 40px;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+
+.ashish h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.ashish p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Form Styles */
+.signup-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.signup-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.signup-form i {
+  margin-right: 8px;
+  color: #ff6f61;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 12px;
+  max-width: 100%; 
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: border 0.3s;
+}
+
+.signup-form input:focus {
+  border-color: #ff6f61;
+  outline: none;
+}
+
+/* Button Style */
+.submit-btn {
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e85a4f;
+}
