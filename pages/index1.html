@@ -6,8 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The PlayZone 🏀🏸 - E-commerce</title>
-  <link rel="stylesheet" href="../css/index1.css">
+  <link rel="stylesheet" href="../css/index1.css"> <!-- Main CSS file -->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome -->
+  <head>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
 </head>
 
 <body>
@@ -17,7 +21,7 @@
     <div class="navbar-links">
       <a href="../pages/index1.html">Home</a>
       <a href="../pages/contactus.html">Contact Us</a>
-      <a href="../pages/about us.html">About Us</a>
+      <a href="">About Us</a>
       <div class="dropdown">
         <button class="dropbtn">Products &#9662;</button>
         <div class="dropdown-content">
@@ -34,8 +38,141 @@
     <a href="#" id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</a>
   </nav>
 
+<!-- new -->
+
+
+<section class="hero-section">
+
+  <div class="hero-section">
+      <!-- Slider Container -->
+      <div class="slider-container">
+        
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <div class="slide-content">
+            <h1 class="sale">Sale 20% Off </h1>
+            <h1 class="sale1">On Everything</h1>
+            <p>
+              Explicabo esse amet tempora voluptatum laudantium, laborum excepturi magni fugit hic? 
+              Esse dicta aliquid error repudiandae earum suscipit fuga molestias, veniam, id architecto 
+              veritatis delectus repleti modi impedit sapui.
+            </p>
+      
+            <a href="#ourproduct" class="btn">Shop Now</a>
+            <!-- <a href="#" class="btn">Explore</a> -->
+          
+          </div>
+          <div class="slide-image">
+            <!-- Replace with your own image -->
+            <img src="../images/girl.png" alt="Slide 1"> 
+          </div>
+        </div>
+    
+        <!-- Slide 2 -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>
+              <span>
+              Sale 20% Off
+              </span>
+              <br>
+              On Everything
+           </h1>
+            <h1>New Arrivals</h1>
+            <p>
+              Check out our latest collection with fresh styles and amazing deals. 
+              Don’t miss out on our limited-time offers!
+            </p>
+            <a href="#" class="btn">Explore</a>
+            <li><a></a></li>
+          </div>
+          <div class="slide-image">
+            <!-- Replace with your own image -->
+            <img src="../images/new arival.png" alt="Slide 1">          
+          </div>
+        </div>
+    
+        <!-- Slide 3 -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1 class="sale">Sale 20% Off </h1>
+            <h1 class="sale2">On Everything</h1>
+            <h1>Trending Now</h1>
+            <p>
+              Discover what’s trending this season. Refresh your wardrobe with 
+              must-have pieces that everyone’s talking about.
+            </p>
+            <a href="#" class="btn">Shop Trending</a>
+          </div>
+          <div class="slide-image">
+            <!-- Replace with your own image -->
+            <img src="../images/tranding 2.png" alt="Slide 1">            
+          </div>
+        </div>
+      </div> <!-- slider-container ends -->
+    
+      <!-- Dots/Pagination -->
+      <div class="dots-container">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+      </div>
+    </div>
+    
+</section>
+
+
+
+
+
+<!-- 2part -->
+<div class="service-section">
+  <h2>Why Shop With Us</h2>
+  <div class="service-cards">
+    <div class="card">
+      <!-- Font Awesome Icon for Fast Delivery -->
+      <i class="fas fa-shipping-fast"></i>
+      <h3>Fast Delivery</h3>
+      <h4>Variations of passages of Lorem Ipsum available</h4>
+    </div>
+    <div class="card">
+      <!-- Font Awesome Icon for Free Shipping -->
+      <i class="fas fa-truck"></i>
+      <h3>Free Shipping</h3>
+      <h4>Enjoy free shipping on all your orders, no minimum required.</h4>
+    </div>
+    <div class="card">
+      <!-- Font Awesome Icon for Best Quality -->
+      <i class="fas fa-certificate"></i>
+      <h3>Best Quality</h3>
+      <h4>Our products are sourced from the best manufacturers to ensure top quality.</h4>
+    </div>
+  </div>
+</div>
+
+<!-- 3part --> 
+<div class="container">
+  <div class="product-header1">
+      <h1>#NewArrivals</h1>
+      <p>
+          Vitae fugiat laboriosam officia perferendis provident aliquid<br>
+          voluptatibus dolorem, fugit ullam sit earum id eaque nisi hic? <br>
+          Tenetur commodi, nisi rem vel, ea eaque ab ipsa, autem <br>
+          similique ex unde!
+      </p>
+      <a href="#ourproduct" class="shop-button">Shop Now</a>
+  </div>
+  <div class="image-newarrival">
+      <img src="../images/new arrival4.png" alt="New Arrival Image">
+  </div>
+</div>
+
+<header class="product-header">
+  <h1>OUR PRODUCTS</h1>
+</header>
+
   <section class="product-section">
-    <h1 class="product-header">BADMINTON RACKIT</h1>
+    <h1 class="product-header">Badminton  Rackits</h1>
     <div class="card-container">
   <!-- Product Cards Section -->
   <div class="container-a">
@@ -51,7 +188,7 @@
                 <div class="overlay-content">
                   <h2 class="h2-1">Astrock 1dg</h2>
                   <a href="../pages/badminton.html" class="explore-more badminton-1">Explore More</a>
-                  <i class="fas fa-arrow-right icon"></i>
+                  <!-- <i class="fas fa-arrow-right icon"></i> -->
                 </div>
               </div>
             </div>
@@ -61,6 +198,7 @@
                 <h2>Astrock  1Dg</h2>
                 <h3>Tension 35</h3>
                 <p>Price: 1999</p>
+                 <i class="fas fa-arrow-right icon"></i> 
                 <a href="../pages/badminton.html" class="explore-more badminton-1">Explore More</a>
                 <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
                 <button onclick="addToCart(this)" class="add-to-cart button-1">Add to Cart</button>
@@ -86,6 +224,7 @@
                 <h2>Asrsaver 73 light</h2>
                 <h3>Tension 30</h3>
                 <p>Price: 2499</p>
+                <i class="fas fa-arrow-right icon"></i>
                 <a href="../pages/badminton.html" class="explore-more badminton-2">Explore More</a>
                 <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
                 <button onclick="addToCart(this)" class="add-to-cart button-2">Add to Cart</button>
@@ -104,7 +243,7 @@
                   <a href="../pages/badminton.html" class="explore-more badminton-3">Explore More</a>
                   <i class="fas fa-arrow-right icon"></i>
                 </div>
-              </div>
+              </div>  
             </div>
             <div class="card-back">
               <div class="product-info">
@@ -112,6 +251,7 @@
                   <h3>Badminton Rackit </h3>     
                   <h3>Tension 35</h3>          
                    <p>Price: 1250</p>
+                   <i class="fas fa-arrow-right icon"></i>
                    <a href="../pages/badminton.html" class="explore-more badminton-3">Explore More</a>
                 <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
                 <button onclick="addToCart(this)" class="add-to-cart button-3">Add to Cart</button>
@@ -138,6 +278,7 @@
                 <h3> Badminton Rackit </h3>
                 <h3>Tension 32</h3>
                 <p>Price: 250</p>
+                <i class="fas fa-arrow-right icon"></i>
                 <a href="../pages/badminton.html" class="explore-more badminton-4">Explore More</a>
                 <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
                 <button onclick="addToCart(this)" class="add-to-cart button-1">Add to Cart</button>
@@ -146,11 +287,12 @@
           </div>
         </div>
 
+        
         <!-- Product 5 -->
-        <!-- <div class="card" data-name="Tennis Ball" data-price="500">
+        <div class="card" data-name="Tennis Ball" data-price="500">
           <div class="card-inner">
             <div class="card-front">
-              <div class="background-image" style="background-image: url('./images/arcsaver\ 7\ pro.jpeg');">
+              <div class="background-image" style="background-image: url('../images/arcsaver\ 7\ pro.jpeg');">
                 <div class="overlay-content">
                   <h2>Arcsaver 7 Pro</h2>
                   <i class="fas fa-arrow-right icon"></i>
@@ -165,13 +307,14 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
-        <!-- Product 6
+
+   <!-- Product 6 -->
         <div class="card" data-name="Sports Water Bottle" data-price="350">
           <div class="card-inner">
             <div class="card-front">
-              <div class="background-image" style="background-image: url('./images/100zz.jpeg');">
+              <div class="background-image" style="background-image: url('../images/100zz.jpeg');">
                 <div class="overlay-content">
                   <h2>Nanoflare 1000 Game </h2>
                   <i class="fas fa-arrow-right icon"></i>
@@ -192,10 +335,12 @@
 
       </div>
     </section>
-  </div>     -->
+  </div>    
+     
   </section>
 
 
+  
 <!-- jursey -->
  
 <section class="product-section">
@@ -218,6 +363,7 @@
           <div class="product-info">
             <h3>Comfortable Badminton Jersey</h3>
             <p>Price: ₹999</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/jersey.html" class="explore-more jersey-1">Explore More</a>
             <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
             <button onclick="addToCart(this)" class="add-to-cart button-5">Add to Cart</button>
@@ -241,6 +387,7 @@
           <div class="product-info">
             <h3>Premium Badminton Jersey</h3>
             <p>Price: ₹1200</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/jersey.html" class="explore-more jersey-2">Explore More</a>
             <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
             <button onclick="addToCart(this)" class="add-to-cart button-6">Add to Cart</button>
@@ -264,6 +411,7 @@
           <div class="product-info">
             <h3>Breathable Badminton Jersey</h3>
             <p>Price: ₹1450</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/jersey.html" class="explore-more jersey-3">Explore More</a>
             <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
             <button onclick="addToCart(this)" class="add-to-cart button-7">Add to Cart</button>
@@ -287,6 +435,7 @@
           <div class="product-info">
             <h3>Performance Badminton Jersey</h3>
             <p>Price: ₹1600</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/jersey.html" class="explore-more jersey-4">Explore More</a>
             <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
             <button onclick="addToCart(this)" class="add-to-cart button-8">Add to Cart</button>
@@ -342,16 +491,16 @@
 
 <!-- Badminton Shorts -->
 <section class="product-section">
-  <h1 class="product-header">Baskit Ball</h1>
+  <h1 class="product-header">BaskitBall</h1>
   <div class="card-container">
     
     <!-- First Badminton Short -->
-    <div class="card" data-name="Badminton Short 1" data-price="699">
+    <div class="card" data-name="baskit ball" data-price="2999">
       <div class="card-inner">
         <div class="card-front">
-          <div class="background-image" style="background-image: url('./images/short1.jpeg');">
+          <div class="background-image" style="background-image: url('../images/baskit\ ad.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-9">Badminton Short 1</h2>
+              <h2 class="h2-9">Adidas</h2>
               <a href="../pages/basketball.html" class="explore-more basketball-1">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -359,8 +508,9 @@
         </div>
         <div class="card-back">
           <div class="product-info">
-            <h3>Comfortable Badminton Shorts</h3>
-            <p>Price: ₹699</p>
+            <h3>Baskit ball</h3>
+            <p>Price: ₹2999</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/basketball.html" class="explore-more basketball-1">Explore More</a>
             <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
             <button onclick="addToCart(this)" class="add-to-cart button-9">Add to Cart</button>
@@ -373,9 +523,9 @@
     <div class="card" data-name="Badminton Short 2" data-price="799">
       <div class="card-inner">
         <div class="card-front">
-          <div class="background-image" style="background-image: url('./images/short2.jpeg');">
+          <div class="background-image" style="background-image: url('../images/baskit\ gold.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-10">Badminton Short 2</h2>
+              <h2 class="h2-10">Baskit Ball Gold</h2>
               <a href="../pages/basketball.html" class="explore-more basketball-2">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -383,8 +533,9 @@
         </div>
         <div class="card-back">
           <div class="product-info">
-            <h3>Premium Badminton Shorts</h3>
+            <h3>Baskit Ball Gold </h3>
             <p>Price: ₹799</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/basketball.html" class="explore-more basketball-2">Explore More</a>
             <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
             <button onclick="addToCart(this)" class="add-to-cart button-10">Add to Cart</button>
@@ -394,12 +545,12 @@
     </div>
 
     <!-- Third Badminton Short -->
-    <div class="card" data-name="Badminton Short 3" data-price="899">
+    <div class="card" data-name="Baskitball cosco" data-price="899">
       <div class="card-inner">
         <div class="card-front">
-          <div class="background-image" style="background-image: url('./images/short3.jpeg');">
+          <div class="background-image" style="background-image: url('../images/baskit\ cosco.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-11">Badminton Short 3</h2>
+              <h2 class="h2-11">Bask tBall COSCO</h2>
               <a href="../pages/basketball.html" class="explore-more basketball-3">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -407,8 +558,9 @@
         </div>
         <div class="card-back">
           <div class="product-info">
-            <h3>Breathable Badminton Shorts</h3>
+            <h3>COSCO BASKIT BALL</h3>
             <p>Price: ₹899</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/basketball.html" class="explore-more basketball-3">Explore More</a>
             <!-- <button onclick="addToCart(this)">Add to Cart</button> -->
             <button onclick="addToCart(this)" class="add-to-cart button-11">Add to Cart</button>
@@ -418,12 +570,12 @@
     </div>
 
     <!-- Fourth Badminton Short -->
-    <div class="card" data-name="Badminton Short 4" data-price="999">
+    <div class="card" data-name="Baskitball Niveya " data-price="999">
       <div class="card-inner">
         <div class="card-front">
-          <div class="background-image" style="background-image: url('./images/short4.jpeg');">
+          <div class="background-image" style="background-image: url('../images/baskit\ nivia.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-12">Badminton Short 4</h2>
+              <h2 class="h2-12">Baskit ball </h2>
               <a href="../pages/basketball.html" class="explore-more basketball-4">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -431,8 +583,9 @@
         </div>
         <div class="card-back">
           <div class="product-info">
-            <h3>Performance Badminton Shorts</h3>
+            <h3>Brand NIVEYA</h3>
             <p>Price: ₹999</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/basketball.html" class="explore-more basketball-4">Explore More</a>
             <button onclick="addToCart(this)" class="add-to-cart button-12">Add to Cart</button>
           </div>
@@ -484,12 +637,11 @@
 
   </div>
 </section>
-
-
+ 
 <!-- Shorts -->
 
 <section class="product-section">
-  <h1 class="product-header">Badminton Shorts</h1>
+  <h1 class="product-header">Shorts</h1>
   <div class="card-container">
     
     <!-- First Badminton Short -->
@@ -498,7 +650,7 @@
         <div class="card-front">
           <div class="background-image" style="background-image: url('../images/shorts1.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-13">Badminton Short 1</h2>
+              <h2 class="h2-13"> Short 1</h2>
               <a href="../pages/shorts.html" class="explore-more shorts-1">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -508,6 +660,7 @@
           <div class="product-info">
             <h3>Comfortable Badminton Shorts</h3>
             <p>Price: ₹699</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/shorts.html" class="explore-more shorts-1">Explore More</a>
             <button onclick="addToCart(this)" class="add-to-cart button-13">Add to Cart</button>
           </div>
@@ -521,7 +674,7 @@
         <div class="card-front">
           <div class="background-image" style="background-image: url('../images/shorts2.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-14">Badminton Short 2</h2>
+              <h2 class="h2-14">Short </h2>
               <a href="../pages/shorts.html" class="explore-more shorts-2">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -531,6 +684,7 @@
           <div class="product-info">
             <h3>Premium Badminton Shorts</h3>
             <p>Price: ₹799</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/shorts.html" class="explore-more shorts-2">Explore More</a>
             <button onclick="addToCart(this)" class="add-to-cart button-14">Add to Cart</button>
           </div>
@@ -544,7 +698,7 @@
         <div class="card-front">
           <div class="background-image" style="background-image: url('../images/shorts9.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-15">Badminton Short 3</h2>
+              <h2 class="h2-15"> Short </h2>
               <a href="../pages/shorts.html" class="explore-more shorts-3">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -552,8 +706,9 @@
         </div>
         <div class="card-back">
           <div class="product-info">
-            <h3>Breathable Badminton Shorts</h3>
+            <h3>Shorts</h3>
             <p>Price: ₹499</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/shorts.html" class="explore-more shorts-3">Explore More</a>
             <button onclick="addToCart(this)" class="add-to-cart button-15">Add to Cart</button>
           </div>
@@ -609,7 +764,7 @@
         <div class="card-front">
           <div class="background-image" style="background-image: url('../images/shorts12.jpg');">
             <div class="overlay-content">
-              <h2 class="h2-16">Badminton Short 6</h2>
+              <h2 class="h2-16">Short</h2>
               <a href="../pages/shorts.html" class="explore-more shorts-4">Explore More</a>
               <i class="fas fa-arrow-right icon"></i>
             </div>
@@ -617,8 +772,9 @@
         </div>
         <div class="card-back">
           <div class="product-info">
-            <h3>Advanced Badminton Shorts</h3>
+            <h3>Shorts</h3>
             <p>Price: ₹1299</p>
+            <i class="fas fa-arrow-right icon"></i>
             <a href="../pages/shorts.html" class="explore-more shorts-4">Explore More</a>
             <button onclick="addToCart(this)" class="add-to-cart button-16">Add to Cart</button>
           </div>
@@ -629,10 +785,46 @@
   </div>
 </section>
 
+<!-- Discount  -->
+
+
+
+
+<header class="discounts">
+  <section class="discount">
+    <div class="dis">
+      <div class="ashish">
+        <i class="fas fa-gift"></i>
+        <h2>Get 25% Off Your First Purchase!</h2>
+        <p>Sign up today & unlock exclusive member benefits.</p>
+      </div>
+  
+      <form action="#" method="POST" class="signup-form">
+        <div class="form-group">
+          <label for="name"><i class="fas fa-user"></i> Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+  
+        <button type="submit" class="submit-btn">Join Now & Save</button>
+      </form>
+    </div>
+  
+  </section>
+</header>
+
+
+
+
+
 
   <!-- Product 4: Badminton Net -->
   <section class="product-section">
-    <h1 class="product-header">Badminton Net</h1>
+    <h1 class="product-header"> Net</h1>
     <div class="card-container">
       
       <!-- First Badminton Net -->
@@ -651,6 +843,7 @@
             <div class="product-info">
               <h3>Premium Badminton Net</h3>
               <p>Price: ₹1500</p>
+              <i class="fas fa-arrow-right icon"></i>
               <a href="../pages/net.html" class="explore-more net-1">Explore More</a>
               <button onclick="addToCart(this)" class="add-to-cart button-17">Add to Cart</button>
             </div>
@@ -674,6 +867,7 @@
             <div class="product-info">
               <h3>Standard Badminton Net</h3>
               <p>Price: ₹1600</p>
+              <i class="fas fa-arrow-right icon"></i>
               <a href="../pages/net.html" class="explore-more net-2">Explore More</a>
               <button onclick="addToCart(this)" class="add-to-cart button-18">Add to Cart</button>
             </div>
@@ -697,6 +891,7 @@
             <div class="product-info">
               <h3>Heavy Duty Badminton Net</h3>
               <p>Price: ₹1700</p>
+              <i class="fas fa-arrow-right icon"></i>
               <a href="../pages/net.html" class="explore-more net-3">Explore More</a>
               <button onclick="addToCart(this)" class="add-to-cart button-19">Add to Cart</button>
             </div>
@@ -720,6 +915,7 @@
             <div class="product-info">
               <h3>Professional Badminton Net</h3>
               <p>Price: ₹1800</p>
+              <i class="fas fa-arrow-right icon"></i>
               <a href="../pages/net.html" class="explore-more net-4">Explore More</a>
               <button onclick="addToCart(this)" class="add-to-cart button-20">Add to Cart</button>
             </div>
@@ -771,6 +967,8 @@
             <div class="product-info">
               <h3>Comfortable Badminton Shoes</h3>
               <p>Price: ₹2999</p>
+              <i class="fas fa-arrow-right icon"></i>
+              <a href="../pages/shoes.html" class="explore-more shoes-1">Explore More</a>
               <button onclick="addToCart(this)" class="add-to-cart button-21">Add to Cart</button>
             </div>
           </div>
@@ -793,6 +991,7 @@
             <div class="product-info">
               <h3>Premium Badminton Shoes</h3>
               <p>Price: ₹3200</p>
+              <i class="fas fa-arrow-right icon"></i>
               <a href="../pages/shoes.html" class="explore-more shoes-2">Explore More</a>
               <button onclick="addToCart(this)" class="add-to-cart button-22">Add to Cart</button>
             </div>
@@ -816,6 +1015,7 @@
             <div class="product-info">
               <h3>High-performance Badminton Shoes</h3>
               <p>Price: ₹3500</p>
+              <i class="fas fa-arrow-right icon"></i>
               <a href="../pages/shoes.html" class="explore-more shoes-3">Explore More</a>
               <button onclick="addToCart(1)" class="add-to-cart">Add to Cart</button>            </div>
           </div>
@@ -838,6 +1038,7 @@
             <div class="product-info">
               <h3>Ultimate Badminton Shoes</h3>
               <p>Price: ₹3800</p>
+              <i class="fas fa-arrow-right icon"></i>
               <a href="../pages/shoes.html" class="explore-more shoes-4">Explore More</a>
               <button onclick="addToCart(2)" class="add-to-cart">Add to Cart</button>          </div>
         </div>
@@ -891,7 +1092,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>..................
   </section> -->
 </div>
 
@@ -903,7 +1104,7 @@
     <ul id="cart-items"></ul>
     <p>Total: <span id="total-price">Rs 0.00</span></p>
     <div class="cart-summary">
-      <button onclick="window.location.href='./pages/checkout .html'">Proceed to Checkout</button>  <!-- Update this link -->
+      <button onclick="window.location.href='../pages/checkout .html'">Proceed to Checkout</button>  <!-- Update this link -->
       <!-- <button onclick="checkout()"> Process to Checkout</button> -->
       <button class="close-btn" onclick="closeCart()">Close</button>
     </div>
@@ -913,34 +1114,67 @@
 
 
 
-  <div class="notification"></div>
-  <!-- Social Media and Call to Action -->
-
-  <!-- Footer Section -->
-<footer class="footer">
-  <div class="social-media">
-    <h2>Follow Us</h2>
-    <div class="social-icons">
-      <a href="#" class="social-icon" target="_blank">Facebook</a>
-      <a href="#" class="social-icon" target="_blank">Twitter</a>
-      <a href="#" class="social-icon" target="_blank">Instagram</a>
-    </div>
-  </div>
-  <div class="call-to-action">
-    <h2>Join Our Newsletter</h2>
-    <p>Stay updated with the latest news and offers. Sign up today!</p>
-  </div>
-</footer>
-
-
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="social-media">
+        <h2>Follow Us</h2>
+        <div class="social-icons">
+          <!-- Facebook Link -->
+          <a href="https://www.facebook.com" class="social-icon" target="_blank">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          
+          <!-- Twitter Link -->
+          <a href="https://www.twitter.com" class="social-icon" target="_blank">
+            <i class="fab fa-twitter"></i> Twitter
+          </a>
+          
+          <!-- Instagram Link -->
+          <a href="https://www.instagram.com" class="social-icon" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          
+          <!-- LinkedIn Link -->
+          <a href="https://www.linkedin.com" class="social-icon" target="_blank">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          
+          <!-- YouTube Link -->
+          <a href="https://www.youtube.com" class="social-icon" target="_blank">
+            <i class="fab fa-youtube"></i> YouTube
+          </a>
+          
+          <!-- Pinterest Link -->
+          <a href="https://www.pinterest.com" class="social-icon" target="_blank">
+            <i class="fab fa-pinterest"></i> Pinterest
+          </a>
+          
+          <!-- Snapchat Link -->
+          <a href="https://www.snapchat.com" class="social-icon" target="_blank">
+            <i class="fab fa-snapchat-ghost"></i> Snapchat
+          </a>
+          
+          <!-- TikTok Link -->
+          <a href="https://www.tiktok.com" class="social-icon" target="_blank">
+            <i class="fab fa-tiktok"></i> TikTok
+          </a>
+        </div>
+      </div>
   
+      <div class="call-to-action">
+        <h2>Join Our Newsletter</h2>
+        <p>Stay updated with the latest news and offers. Sign up today!</p>
+      </div>
+    </footer>
+
 
 <!-- Include Font Awesome Icons -->
  <script src="https://kit.fontawesome.com/your-font-awesome-key.js" crossorigin="anonymous"></script>
 <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
 
 
-  <script src="../jsfile/index1.js"></script>
+  <script src="../jsfile/index.js"></script>
+
 </body>
 
 </html>

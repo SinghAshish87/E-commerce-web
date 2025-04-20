@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Floating Card Design</title>
-  <link rel="stylesheet" href="../css/baskit.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basketballs | The PlayZone 🏀</title>
+  <link rel="stylesheet" href="../css/baskit.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
 
@@ -24,266 +24,178 @@
           <a href="badminton.html">Badminton Rackets</a>
           <a href="../pages/shuttle.html">Shuttle</a>
           <a href="../pages/grip.html">Grips</a>
-          <a href="../pages/baskit.html">Baskitball</a>
+          <a href="../pages/baskit.html">Basketball</a>
           <a href="../pages/jursey.html">Jersey</a>
         </div>
-        <a href="../pages/feedback.html">Feedback!</a>
       </div>
+      <a href="../pages/feedback.html">Feedback!</a>
     </div>
     <a href="#" id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</a>
   </nav>
 
+  <!-- Header Section -->
   <section class="centered-section">
-    <header>BASKIT BALLS</header>
-</section>
-  <!-- Product Cards Section -->
-  <div class="container-a">
-    <section class="product-section">
-      <div class="card-container">
-        <!-- Product 1 -->
-        <div class="card" data-name="NANOFLARE 1000ZZ" data-price="15999" data-img="../images/baskit.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit.jpg');">
-                <div class="overlay-content">
-                  <h2></h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2></h2>
-                <h2></h2>
-                <h2> PRICE:15999</h2>
-                <!-- <p></p> -->
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <header>Basketballs Collection</header>
+  </section>
 
-        <!-- 2 -->
-        <div class="card" data-name="Adidas" data-price="3599" data-img="../images/baskit\ ad.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ ad.jpg');">
-                <div class="overlay-content">
-                  <h2></h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-                <h2>ASTROCK 1DG</h2>
-                <h2>TENSION :35LBS</h2>
-                <h2>Price:3599</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
+  <!-- Product Grid -->
+  <div class="product-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card card" data-name="NANOFLARE 1000ZZ" data-price="15999" data-img="../images/100zz.jpeg">
+      <div class="image-slider">
+        <img src="../images/100zz.jpeg" class="active" />
+        <img src="../images/300i shuttle.jpg" />
+        <img src="../images/arcsaver 7 pro.jpeg" />
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots">
+          <span class="dot active-dot" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
         </div>
-        <!-- 3 -->
-        <div class="card" data-name="Nike" data-price="4000" data-img="../images/baskit\ all\ court.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ all\ court.jpg');">
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-               <h2>ASTROCK 3DG</h2>
-               <h2> PRICE:4000</h2>
-               <h2>TENSION:35LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="product-details">
+        <h2>BRAND YONIX</h2>
+        <h2>ASTROCK 1DG</h2>
+        <h2>TENSION: 35LBS</h2>
+        <h2>Price: ₹15,999</h2>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card card" data-name="ADIDAS COURT BALL" data-price="3599" data-img="../images/baskit ad.jpg">
+      <div class="image-slider">
+        <img src="../images/baskit ad.jpg" class="active" />
+        <img src="../images/ball_extra1.jpg" />
+        <img src="../images/ball_extra2.jpg" />
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots">
+          <span class="dot active-dot" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
         </div>
-        <!-- 4 -->
-        <div class="card" data-name="COSCO" data-price="2000" data-img="../images/baskit\ cosco.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ cosco.jpg');"></div>
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND YONIX</h2>
-               <h2>ASTROCK 37i</h2>
-               <h2>PRICE:2000</h2>
-               <h2>TENSION:30LBS</h2>
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="product-details">
+        <h2>BRAND ADIDAS</h2>
+        <h2>COURT PRO</h2>
+        <h2>SIZE: 7</h2>
+        <h2>Price: ₹3,599</h2>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card card" data-name="NIKE STREETBALL" data-price="4000" data-img="../images/baskit all court.jpg">
+      <div class="image-slider">
+        <img src="../images/baskit all court.jpg" class="active" />
+        <img src="../images/ball_extra3.jpg" />
+        <img src="../images/ball_extra4.jpg" />
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots">
+          <span class="dot active-dot" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
         </div>
-        <!-- 5 -->
-        <div class="card" data-name="ASTROCK 99 PLAY" data-price="4500" data-img="../images/baskit\ gold.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ gold.jpg');">
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BLACK BASKIT</h2>
-                <h2>GOLD BRAND </h2>
-                <h2> PRICE:4500</h2>
-                <!-- <h2>TENSION:35LBS</h2> -->
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 6 -->
-        <div class="card" data-name="HOOPS" data-price="4000" data-img="../images/baskit\ hoops.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ hoops.jpg');">  
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>HOOPS</h2>
-               <h2>BASKIT BALL </h2>
-               <h2>PRICE:4000</h2>
-               <!-- <h2>TENSION:35LBS</h2> -->
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 7 -->
-         
-        <div class="card" data-name="BASKIT BALL KONIX " data-price="4000" data-img="../images/baskit\ konix.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ konix.jpg');">
-                <div class="overlay-content">
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BASKIT BALL</h2>
-               <h2>KONIX</h2>
-               <h2>PRICE:4000</h2>
-               <!-- <h2>TENSION:35LBS</h2> -->
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card" data-name="BASKIT BALL NIVIA" data-price="4000" data-img="../images/baskit\ nivia.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ nivia.jpg');"> 
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND NIVIA</h2>
-                <h2>BASKIT BALL </h2>
-                <h2>PRICE:4000</h2>
-                <!-- <h2>TENSION:35LBS</h2> -->
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        
-        <!--8 -->
-        <div class="card" data-name="BASKIT BALL NONEX PRO" data-price="1600" data-img="../images/baskit\ top.jpg">
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="background-image" style="background-image: url('../images/baskit\ top.jpg');"> 
-                  <h2</h2>
-                  <!-- <i class="fas fa-arrow-right icon"></i> -->
-                </div>
-              </div>
-            </div>
-            <div class="card-back">
-              <div class="product-info">
-                <h2>BRAND NIVIA PRO </h2>
-                <h2>BASKIT BALL</h2>
-                <h2>PRICE:1600</h2>
-                <!-- <h2>TENSION:32LBS</h2> -->
-                <button onclick="addToCart(this)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <div class="card" data-name="BASKIT BALL FIHEC" data-price="2000" data-img="../images/baskit\ gold.jpg">
-            <div class="card-inner">
-              <div class="card-front">
-                <div class="background-image" style="background-image: url('../images/baskit\ gold.jpg');"> 
-                    <h2</h2>
-                    <!-- <i class="fas fa-arrow-right icon"></i> -->
-                  </div>
-                </div>
-              </div>
-              <div class="card-back">
-                <div class="product-info">
-                  <h2>BRAND FIHEC </h2>
-                  <h2>BASKIT BALL </h2>
-                  <h2>PRICE:2000</h2>
-                  <!-- <h2>TENSION:30LBS</h2> -->
-                  <button onclick="addToCart(this)">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-        </div>      
-         </div>
+      </div>
+      <div class="product-details">
+        <h2>BRAND NIKE</h2>
+        <h2>STREETBALL 500</h2>
+        <h2>TYPE: Outdoor</h2>
+        <h2>Price: ₹4,000</h2>
+        <button onclick="addToCart(this)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- More products can be added here in the same format -->
+     <!-- Product 4 -->
+<div class="product-card card" data-name="SPALDING NBA" data-price="2799" data-img="../images/spalding1.jpg">
+  <div class="image-slider">
+    <img src="../images/spalding1.jpg" class="active" />
+    <img src="../images/spalding2.jpg" />
+    <img src="../images/spalding3.jpg" />
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+    <div class="dots">
+      <span class="dot active-dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+  </div>
+  <div class="product-details">
+    <h2>BRAND SPALDING</h2>
+    <h2>NBA OFFICIAL BALL</h2>
+    <h2>WEIGHT: Standard</h2>
+    <h2>Price: ₹2,799</h2>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Product 5 -->
+<div class="product-card card" data-name="NIVIA ENGAGE" data-price="1899" data-img="../images/nivia1.jpg">
+  <div class="image-slider">
+    <img src="../images/nivia1.jpg" class="active" />
+    <img src="../images/nivia2.jpg" />
+    <img src="../images/nivia3.jpg" />
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+    <div class="dots">
+      <span class="dot active-dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+  </div>
+  <div class="product-details">
+    <h2>BRAND NIVIA</h2>
+    <h2>ENGAGE TRAINER</h2>
+    <h2>SIZE: 6</h2>
+    <h2>Price: ₹1,899</h2>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Product 6 -->
+<div class="product-card card" data-name="COSCO HI-TECH" data-price="999" data-img="../images/cosco1.jpg">
+  <div class="image-slider">
+    <img src="../images/cosco1.jpg" class="active" />
+    <img src="../images/cosco2.jpg" />
+    <img src="../images/cosco3.jpg" />
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+    <div class="dots">
+      <span class="dot active-dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+  </div>
+  <div class="product-details">
+    <h2>BRAND COSCO</h2>
+    <h2>HI-TECH RUBBER</h2>
+    <h2>TYPE: Practice</h2>
+    <h2>Price: ₹999</h2>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+</div>
+
+
+  </div>
 
   <!-- Cart Modal -->
   <div class="cart-modal" id="cartModal">
-    <div class="cart-content">
+    <div class="cart-modal-content">
+      <h2>Your Cart</h2>
       <ul id="cart-items"></ul>
-      <p>Total: <span id="total-price">Rs 0.00</span></p>
-      <div class="cart-summary">
-        <button onclick="checkout()">Proceed to Checkout</button>
-        <button class="close-btn" onclick="closeCart()">Close</button>
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="total-price">₹0.00</span>
       </div>
+      <button class="checkout" onclick="checkout()">Proceed to Checkout</button>
+      <button class="close" onclick="closeCart()">Close</button>
     </div>
   </div>
-
-  <div id="notification-container"></div>
-
-
-  <script>
-    // Get the dropdown button
-    const dropbtn = document.querySelector('.dropbtn');
-
-    // Add click event to toggle the dropdown
-    dropbtn.addEventListener('click', function() {
-        const dropdown = dropbtn.parentElement; // Get the parent dropdown
-        dropdown.classList.toggle('show'); // Toggle the 'show' class on the dropdown
-    });
-</script>
-
 
   <script src="../jsfile/baskit.js"></script>
 </body>

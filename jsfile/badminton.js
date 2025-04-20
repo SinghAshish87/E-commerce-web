@@ -1,5 +1,43 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = document.querySelectorAll(".image-slider");
+
+  sliders.forEach((slider) => {
+    const images = slider.querySelectorAll("img");
+    const dots = slider.querySelectorAll(".dot");
+    let index = 0;
+
+    const showImage = (i) => {
+      images.forEach((img, idx) => {
+        img.classList.toggle("active", idx === i);
+      });
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active-dot", idx === i);
+      });
+    };
+
+    slider.querySelector(".prev").addEventListener("click", () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    });
+
+    slider.querySelector(".next").addEventListener("click", () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", (e) => {
+        index = parseInt(dot.getAttribute("data-index"));
+        showImage(index);
+      });
+    });
+
+    showImage(index);
+  });
+});
+
 // Initialize cart variables
-let cartItems = JSON.parse(localStorage.getItem("cart")) || []; // Array to store cart items
+let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 let cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 let lastScrollPosition = 0;
 
@@ -8,39 +46,35 @@ const cartModal = document.getElementById("cartModal");
 const cartItemsList = document.getElementById("cart-items");
 const totalPriceElement = document.getElementById("total-price");
 
-// Notification container (used to display the notifications)
+// Notification container
 const notificationContainer = document.getElementById("notification-container");
 
-// Toggle the visibility of the cart modal
+// Toggle cart modal
 cartIcon.addEventListener("click", function () {
   cartModal.classList.toggle("show");
   if (cartModal.classList.contains("show")) {
-    lastScrollPosition = window.scrollY; // Remember current scroll position when opening the cart
+    lastScrollPosition = window.scrollY;
   }
 });
 
-// Close Cart Modal
 function closeCart() {
   cartModal.classList.remove("show");
   window.scrollTo(0, lastScrollPosition);
 }
 
-// Add to Cart
 function addToCart(button) {
-  const card = button.closest(".card");
-  const productName = card.getAttribute("data-name"); // Get the product name dynamically
+  const card = button.closest(".product-card");
+  const productName = card.getAttribute("data-name");
   const productPrice = parseFloat(card.getAttribute("data-price"));
-  const productImage = card.getAttribute("data-img"); // Get the image URL dynamically
+  const productImage = card.getAttribute("data-img");
 
-  // Check if the product already exists in the cart
   const existingItem = cartItems.find((item) => item.name === productName);
 
   if (existingItem) {
-    showNotification("This product is already in your cart!"); // Message dikhao, dobara add mat karo
-    return; // Function yahin stop kar do
+    showNotification("This product is already in your cart!");
+    return;
   }
 
-  // If the product doesn't exist, add it to the cart
   cartItems.push({
     name: productName,
     price: productPrice,
@@ -48,69 +82,59 @@ function addToCart(button) {
     quantity: 1,
   });
 
-  // Update the cart count
-  updateCartCount();
-
   localStorage.setItem("cart", JSON.stringify(cartItems));
   showNotification(`${productName} has been added to your cart!`);
-  // Update the cart view
+  updateCartCount();
   updateCart();
 }
+
 function updateCartCount() {
   cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
   document.getElementById("cart-count").textContent = cartCount;
 }
 
-// Show Notification with Animation
 function showNotification(productName) {
   const notification = document.createElement("div");
+  let notificationContainer = document.getElementById("notification-container");
+
+  if (!notificationContainer) {
+    notificationContainer = document.createElement("div");
+    notificationContainer.id = "notification-container";
+    document.body.appendChild(notificationContainer);
+  }
+
   notification.classList.add("notification");
 
-  // Create smiley face element
   const smiley = document.createElement("span");
   smiley.classList.add("smiley");
-  smiley.textContent = "😊"; // Smiley face emoji
+  smiley.textContent = "😊";
 
-  // Create text for the notification
   const notificationText = document.createElement("span");
-  notificationText.textContent = `${productName} added to cart`; // This dynamically shows the product name
+  notificationText.textContent = `${productName} added to cart`;
 
-  // Append smiley and text to the notification
   notification.appendChild(smiley);
   notification.appendChild(notificationText);
-
-  // Append the notification to the container
   notificationContainer.appendChild(notification);
 
-  // Remove notification after 4 seconds (to match animation time)
   setTimeout(() => {
     notificationContainer.removeChild(notification);
-  }, 4000); // Timeout is 4s to match the animation duration
+  }, 4000);
 }
 
-// Update Cart Display
 function updateCart() {
-  cartItemsList.innerHTML = ""; // Clear the cart
-
+  cartItemsList.innerHTML = "";
   let totalPrice = 0;
 
-  // Loop through cart items and create cart item list elements
   cartItems.forEach((item) => {
     totalPrice += item.price * item.quantity;
-    console.log(item);
 
     const cartItem = document.createElement("li");
     cartItem.classList.add("cart-item");
 
-    // Create the cart item element with the image, name, price, quantity, etc.
     cartItem.innerHTML = `
-      <img src="${item.image}" alt="${
-      item.name
-    }" width="50" />  <!-- Product Image -->
-      <p>${item.name} x${item.quantity}</p>  <!-- Product Name and Quantity -->
-      <p>Rs ${
-        item.price * item.quantity
-      }</p>  <!-- Total Price for that item -->
+      <img src="${item.image}" alt="${item.name}" width="50" />
+      <p>${item.name} x${item.quantity}</p>
+      <p>Rs ${item.price * item.quantity}</p>
       <div class="adjust-quantity">
         <button onclick="increaseQuantity('${item.name}')">+</button>
         <button onclick="decreaseQuantity('${item.name}')">-</button>
@@ -120,11 +144,9 @@ function updateCart() {
     cartItemsList.appendChild(cartItem);
   });
 
-  // Update the total price in the cart
   totalPriceElement.textContent = `Rs ${totalPrice.toFixed(2)}`;
 }
 
-// Increase Item Quantity
 function increaseQuantity(name) {
   const item = cartItems.find((item) => item.name === name);
   if (item) {
@@ -134,7 +156,6 @@ function increaseQuantity(name) {
   }
 }
 
-// Decrease Item Quantity
 function decreaseQuantity(name) {
   const item = cartItems.find((item) => item.name === name);
   if (item && item.quantity > 1) {
@@ -144,7 +165,6 @@ function decreaseQuantity(name) {
   }
 }
 
-// Remove Item from Cart
 function removeFromCart(name) {
   cartItems = cartItems.filter((item) => item.name !== name);
   localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -152,7 +172,6 @@ function removeFromCart(name) {
   updateCart();
 }
 
-// Checkout (Placeholder for now)
 function checkout() {
   alert("Proceeding to Checkout...");
 }

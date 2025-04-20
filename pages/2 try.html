@@ -16,7 +16,7 @@
   <nav class="navbar">
     <h1 class="shop-name">The PlayZone 🏀🏸</h1>
     <div class="navbar-links">
-      <a href="../pages/index1.html">Home</a>
+      <a href="../pages/index.html">Home</a>
       <a href="../pages/contactus.html">Contact Us</a>
       <a href="../pages/about us.html">About Us</a>
       <div class="dropdown">
@@ -42,7 +42,7 @@
     <div class="product-grid">
         <!-- Product Items -->
         <!-- Repeat this block for each product -->
-        <div class="product-card" data-name="NANOFLARE 1000ZZ" data-price="15999">
+        <div class="product-card card" data-name="NANOFLARE 1000ZZ" data-price="15999" data-img="../images/100zz.jpeg">
           <!-- <img src="../images/100zz.jpeg" alt="NANOFLARE 1000ZZ"> -->
           <div class="product-details">
            
@@ -76,7 +76,6 @@
                </div>
 <br>
                <div class="product-grid">
-
                 <!-- Product 1 -->
                 <div class="product-card" data-name="NANOFLARE 1000ZZ" data-price="15999">
                   <div class="image-slider">
@@ -100,9 +99,9 @@
                 </div>
               
                 <!-- Product 2 -->
-                <div class="product-card" data-name="ASTROX 99 PRO" data-price="17999">
+                <div class="product-card" data-name="ASTROX 99 PRO" data-price="17999" data-img="../images/100zz.jpeg">
                   <div class="image-slider">
-                    <img src="../images/astrox99.jpeg" class="active" alt="ASTROX 99 PRO"/>
+                    <img src="../images/7dg.jpg" class="active" alt="ASTROX 99 PRO"/>
                     <img src="../images/astrox99b.jpeg" class="hidden" />
                     <img src="../images/astrox99r.jpeg" class="hidden" />
                     <button class="prev">&#10094;</button>
@@ -124,7 +123,7 @@
                 <!-- Product 3 -->
                 <div class="product-card" data-name="ARCSABER 11 PRO" data-price="13999">
                   <div class="image-slider">
-                    <img src="../images/arcsaber11.jpeg" class="active" alt="ARCSABER 11 PRO"/>
+                    <img src="../images/73 light.webp" class="active" alt="ARCSABER 11 PRO"/>
                     <img src="../images/arcsaber11r.jpeg" class="hidden" />
                     <img src="../images/arcsaber11y.jpeg" class="hidden" />
                     <button class="prev">&#10094;</button>
@@ -146,7 +145,7 @@
                 <!-- Product 4 -->
                 <div class="product-card" data-name="LINING TURBO X90" data-price="8999">
                   <div class="image-slider">
-                    <img src="../images/turbox90.jpeg" class="active" alt="LINING TURBO X90"/>
+                    <img src="../images/99playy.jpeg" class="active" alt="LINING TURBO X90"/>
                     <img src="../images/turbox90b.jpeg" class="hidden" />
                     <img src="../images/turbox90y.jpeg" class="hidden" />
                     <button class="prev">&#10094;</button>
@@ -168,7 +167,7 @@
                 <!-- Product 5 -->
                 <div class="product-card" data-name="VICTOR JETSPEED S12" data-price="10999">
                   <div class="image-slider">
-                    <img src="../images/jetspeed12.jpeg" class="active" alt="VICTOR JETSPEED S12"/>
+                    <img src="../images/arcsaver 7 pro.jpeg" class="active" alt="VICTOR JETSPEED S12"/>
                     <img src="../images/jetspeed12b.jpeg" class="hidden" />
                     <img src="../images/jetspeed12g.jpeg" class="hidden" />
                     <button class="prev">&#10094;</button>
@@ -190,7 +189,7 @@
                 <!-- Product 6 -->
                 <div class="product-card" data-name="YONEX DUORA 10" data-price="11999">
                   <div class="image-slider">
-                    <img src="../images/duora10.jpeg" class="active" alt="YONEX DUORA 10"/>
+                    <img src="../images/astrock37i.jpg" class="active" alt="YONEX DUORA 10"/>
                     <img src="../images/duora10r.jpeg" class="hidden" />
                     <img src="../images/duora10y.jpeg" class="hidden" />
                     <button class="prev">&#10094;</button>
@@ -212,7 +211,7 @@
                 <!-- Product 7 -->
                 <div class="product-card" data-name="LI-NING 3D CALIBAR 900" data-price="14999">
                   <div class="image-slider">
-                    <img src="../images/calibar900.jpeg" class="active" alt="LI-NING 3D CALIBAR 900"/>
+                    <img src="../images/attack 9.jpg" class="active" alt="LI-NING 3D CALIBAR 900"/>
                     <img src="../images/calibar900b.jpeg" class="hidden" />
                     <img src="../images/calibar900r.jpeg" class="hidden" />
                     <button class="prev">&#10094;</button>
@@ -342,7 +341,17 @@
                 </div>
               
               </div>
-                           
+
+              <div class="cart-modal" id="cartModal">
+                <div class="cart-content">
+                  <ul id="cart-items"></ul>
+                  <p>Total: <span id="total-price">Rs 0.00</span></p>
+                  <div class="cart-summary">
+                    <button onclick="checkout()">Proceed to Checkout</button>
+                    <button class="close-btn" onclick="closeCart()">Close</button>
+                  </div>
+                </div>
+              </div>          
 
 <script src="../jsfile/2try.js"></script>
  </body>
