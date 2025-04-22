@@ -582,3 +582,20 @@ button.checkout:hover {
   margin-right: 10px;
   font-size: 20px;
 }
+
+
+
+@keyframes bounceIn {
+  0% {
+    transform: translateY(0) scale(1);
+    color: #444;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+    color: #ff5722;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    color: #333;
+  }
+}
