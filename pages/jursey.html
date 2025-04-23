@@ -174,7 +174,7 @@
       <div class="image-slider">
         <img src="../images/shorts s1.jpg" class="active" alt="SPORTS SHORTS 6">
         <img src="../images/shorts s3.jpg" class="hidden" alt="SPORTS SHORTS 6">
-        <img src="../images/" class="hidden" alt="SPORTS SHORTS 6">
+        <img src="../images/shorts sin.png" class="hidden" alt="SPORTS SHORTS 6">
         
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
@@ -433,58 +433,27 @@
   </div>
 
   <script>
-    let slideIndex = 0;
-    let slides = document.querySelectorAll(".image-slider img");
-    let dots = document.querySelectorAll(".dot");
-
-    function showSlides() {
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("active");
-        dots[i].classList.remove("active-dot");
-      }
-
-      slideIndex++;
-      if (slideIndex > slides.length) {
-        slideIndex = 1;
-      }
-
-      slides[slideIndex - 1].classList.add("active");
-      dots[slideIndex - 1].classList.add("active-dot");
-    }
-
-    function plusSlides(n) {
-      slideIndex += n;
-      if (slideIndex > slides.length) {
-        slideIndex = 1;
-      }
-      if (slideIndex < 1) {
-        slideIndex = slides.length;
-      }
-
-      showSlides();
-    }
-
-    function currentSlide(n) {
-      slideIndex = n;
-      showSlides();
-    }
-
-    document.querySelector(".prev").addEventListener("click", function() {
-      plusSlides(-1);
-    });
-
-    document.querySelector(".next").addEventListener("click", function() {
-      plusSlides(1);
-    });
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", function() {
-        currentSlide(index + 1);
+    const sliderTrack = document.querySelector(".slider-track");
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
+  
+    const scrollAmount = 320; // Width of one image (adjust as needed)
+  
+    prevButton.addEventListener("click", () => {
+      sliderTrack.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth"
       });
     });
-
-    setInterval(showSlides, 3000); // Change image every 3 seconds
+  
+    nextButton.addEventListener("click", () => {
+      sliderTrack.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth"
+      });
+    });
   </script>
+  
 <script src="../jsfile/jursey.js"></script>
 </body>
 </html>
