@@ -27,6 +27,10 @@ body {
   background: #555;
 }
 
+header{
+  text-align: center;
+  font-weight: 900;
+}
 /* ====== Navbar / Header ====== */
 .navbar {
   background-color: #16045e;

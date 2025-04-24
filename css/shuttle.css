@@ -682,3 +682,29 @@ body {
   margin-right: 10px;
   font-size: 20px;
 }
+
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-weight: bold;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.notification.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
